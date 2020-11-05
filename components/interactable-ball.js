@@ -1,4 +1,4 @@
-let scene = document.querySelector("a-scene");
+//let scene = document.querySelector("a-scene");
 if (scene.hasLoaded) {
 	run();
 } else {

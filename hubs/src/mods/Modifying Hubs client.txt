@@ -1,0 +1,86 @@
+1. To add menu items, you need to modify the...
+
+	"hubs\src\react-components\settings-menu.js"
+
+comments:
+a. Make sure you use js comments encapsulated in {} if you comment the code
+
+b. This pulls its actual text inputs from "hubs\src\assets\locales\en.json"
+
+c. You can search for the section of whichever menu you want to modify or add to by
+searching through the en.json and looking for the settings.'attribute' text you want to
+change or modify.  Then search for that attribute in the settings-menu.js file to find the
+location to insert your menu element.
+
+2. Collision_layers are mapped in...
+
+	"hubs\src\constants.js"
+	
+comments:
+a. These appear to be similar to collision layers in Unity where you can set objects to only collide with certain other objects by setting their collision layer attribute.  For example an UNOWNED_INTERACTABLE (layers 1 | 8) will only collide with INTERACTABLES: 1 and HANDS: 8.  This only pertains to physics interaction collisions.
+
+b. If your component is only supposed to interact with certain layers you'll want to set that up in the component mappings.  See the file...
+
+	"hubs\src\gltf_component_mappings.js"
+	
+3.  You may need to create templates for NAF for which you will need to register the template in the...
+
+	"hubs\src\network-schemas.js
+	
+a.  This file contains registered schemas for NAF templates and the components they can modify over NAF (networked Aframe)  for example...
+
+	NAF.schemas.add({
+		template: "#interactable-media",   // interactable-media template
+		components: [
+		// updates position over the network every 0.001 unit of change
+		  {
+			component: "position",
+			requiresNetworkUpdate: vectorRequiresUpdate(0.001)
+		  },
+		// updates rotation over the network every half degree of change
+		  {
+			component: "rotation",
+			requiresNetworkUpdate: vectorRequiresUpdate(0.5)
+		  },
+		// updates the scale over the network every 0.001 increment
+		  {
+			component: "scale",
+			requiresNetworkUpdate: vectorRequiresUpdate(0.001)
+		  },
+
+		  "media-loader",
+		  {
+			component: "media-video",
+			property: "time"
+		  },
+		  {
+			component: "media-video",
+			property: "videoPaused"
+		  },
+		  {
+			component: "media-pdf",
+			property: "index"
+		  },
+		  "pinnable"
+		],
+		nonAuthorizedComponents: [
+		  {
+			component: "media-video",
+			property: "time"
+		  },
+		  {
+			component: "media-video",
+			property: "videoPaused"
+		  },
+		  {
+			component: "media-pager",
+			property: "index"
+		  }
+		]
+	  }); 
+	  
+4.  In "hubs\src\systems" the cursor-targeting-system.js file sets up an array of objects that can be interacted with as objects are added to the scene through the other systems.  Currently the class for the object must be set to one of the following to be capable of cursor interaction...
+
+".collidable, .interactable, .ui, .drawing, .occupiable-waypoint-icon, .teleport-waypoint-icon"
+
+These class names are set via other systems and create other behaviors so we may want to create a new "interactable template" for NAF that allows interaction and control but does not allow grabbing through the physics system does.

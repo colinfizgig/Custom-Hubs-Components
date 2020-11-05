@@ -263,6 +263,8 @@ AFRAME.registerComponent("slide-counter", {
 			}
 		]
 	});
+	
+	scene.emit('codeInjected');
 }
 
 

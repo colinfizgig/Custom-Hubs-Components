@@ -134,7 +134,7 @@ function run() {
 			"pinnable"
 		]
 	});
-				
+	scene.emit('codeInjected');			
 }
 
 // a function to create a new networked entity in the scene using the new template created above

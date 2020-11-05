@@ -1,6 +1,3 @@
-let scene = document.querySelector("a-scene");
-
-console.log("scene loaded");
 
 AFRAME.registerComponent("slide-counter", {
 	schema: {

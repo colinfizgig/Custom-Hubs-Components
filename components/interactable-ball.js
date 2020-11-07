@@ -1,11 +1,11 @@
 AFRAME.registerComponent('camera-cube-env', {
   schema: {
 	    resolution: { type:'number', default: 128},
-	    distance: {type:'number', default: 10000},
+	    distance: {type:'number', default: 2000},
 	    interval: { type:'number', default: 1000},
-		matoverride: {type:'boolean', default: true},
+		matoverride: {type:'boolean', default: false},
 		metalness: { type:'float', default: 1.0},
-		roughness: { type:'float', default: 0.5},
+		roughness: { type:'float', default: 0.2},
 	    repeat: { type:'boolean', default: false}
 	  },
 
@@ -209,7 +209,7 @@ function run() {
 	// qualities of the entity.  We can reuse bh to set all it's values
 	bh = document.createAttribute("tags")
 	// set it to be a hand collision target, holdable, give it a hand constraint, a remote constraint, and set to be inspectable with a right click.
-	bh.value = "isHandCollisionTarget: true; isHoldable: true; offersHandConstraint: true; offersRemoteConstraint: true; inspectable: true;"
+	bh.value = "isHandCollisionTarget: true; isHoldable: true; offersHandConstraint: true; offersRemoteConstraint: true; inspectable: true;";
 	newEntity.setAttributeNode(bh);
 				
 	// you can set the objects to be destroyed at extreme distances in order to avoid having a bunch of hard to find physics objects falling in your hub
@@ -236,7 +236,9 @@ function run() {
 	newEntity.setAttribute("listed-media", "");
 	
 	//add the camera-cube-env component
-	newEntity.setAttribute("camera-cube-env", "");
+	bh = document.createAttribute("camera-cube-env");
+	bh.value = "resolution: 512; distance: 2000; interval: 1000; matoverride: true; metalness: 1.0; roughness: 0.2; repeat: true;";   
+	newEntity.setAttribute(bh);
 				
 	//Once all the attributes are setup on the entity you can append it to the template variable content created above.
 	newTemplate.content.appendChild(newEntity);

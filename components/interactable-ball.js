@@ -283,6 +283,8 @@ function run() {
 				requiresNetworkUpdate: vectorRequiresUpdate(0.001)
 			},
 			"media-loader",
+			"material",
+			"camera-cube-env",
 			"pinnable"
 		]
 	});

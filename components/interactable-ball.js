@@ -1,4 +1,12 @@
-AFRAME.registerComponent('camera-cube-env', {
+if (scene.hasLoaded) {
+	run();
+} else {
+	scene.addEventListener('loaded', run);
+}
+
+function run() {
+	
+	AFRAME.registerComponent('camera-cube-env', {
   schema: {
 	    resolution: { type:'number', default: 128},
 	    distance: {type:'number', default: 2000},
@@ -147,15 +155,6 @@ AFRAME.registerComponent('camera-cube-env', {
 	   */
 	  play: function () { }
 	});
-	
-
-if (scene.hasLoaded) {
-	run();
-} else {
-	scene.addEventListener('loaded', run);
-}
-
-function run() {
 				
 	//Query assets in order to setup template
 	let assets = scene.querySelector("a-assets");
@@ -196,7 +195,7 @@ function run() {
 	// reuse the same bh variable for a material attribute to color the geometry
 	bh = document.createAttribute("material");
 	// set the color to yellow.  You can set a lot of things here, texture, shininess etc.  See the aframe docs on materials
-	bh.value = "color:yellow";
+	bh.value = "color:yellow;metalness:1.0;roughness:0.2;";
 	newEntity.setAttributeNode(bh);
 				
 	// set the unowned body kinematic component for the object since it's networked
@@ -228,7 +227,7 @@ function run() {
 	// without it set on the actual entity which contains the mesh (set with the 
 	// geometry component above in this case) the physics won't collide and the 
 	// object will fall through the ground.  Check the component for details
-	bh = document.createAttribute("shape-helper");
+	bh = document.createAttribute("shape-helper")
 	bh.value = "";
 	newEntity.setAttributeNode(bh);
 				
@@ -236,9 +235,7 @@ function run() {
 	newEntity.setAttribute("listed-media", "");
 	
 	//add the camera-cube-env component
-	bh = document.createAttribute("camera-cube-env");
-	bh.value = "resolution: 512; distance: 2000; interval: 1000; matoverride: true; metalness: 1.0; roughness: 0.2; repeat: true;";   
-	newEntity.setAttribute(bh);
+	newEntity.setAttribute("camera-cube-env", "");
 				
 	//Once all the attributes are setup on the entity you can append it to the template variable content created above.
 	newTemplate.content.appendChild(newEntity);
@@ -289,7 +286,7 @@ function run() {
 			"pinnable"
 		]
 	});
-	scene.emit('codeInjected');			
+		
 }
 
 // a function to create a new networked entity in the scene using the new template created above

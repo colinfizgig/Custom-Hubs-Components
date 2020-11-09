@@ -1,8 +1,10 @@
+/*
 if (scene.hasLoaded) {
 	run();
 } else {
 	scene.addEventListener('loaded', run);
 }
+*/
 
 function run() {
 	
@@ -294,6 +296,7 @@ function run() {
 // a function to create a new networked entity in the scene using the new template created above
 // this could be bound to a chat command if we wanted to do that similar to the /duck 
 // component chat command
+run();
 
 function addBall(){
 	var el = document.createElement("a-entity")

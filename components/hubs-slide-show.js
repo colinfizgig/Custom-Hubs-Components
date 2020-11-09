@@ -110,7 +110,7 @@ AFRAME.registerComponent("slide-counter", {
 				
 		console.log("inject loaded");
 		//Query assets in order to setup template
-		let assets = scene.querySelector("a-assets");
+		let assets = document.querySelector("a-assets");
 		// create a new template variable
 		let newTemplate = document.createElement("template");
 		// create template id
@@ -263,8 +263,7 @@ AFRAME.registerComponent("slide-counter", {
 			}
 		]
 	});
-	
-	scene.emit('codeInjected');
+
 }
 
 inject_scriptable_Media();

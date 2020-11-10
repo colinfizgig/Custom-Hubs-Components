@@ -99,12 +99,6 @@ AFRAME.registerComponent("slide-counter", {
 			}
 		}
 	});
-	/*				
-	if (scene.hasLoaded) {
-		inject_scriptable_Media();
-	} else {
-		scene.addEventListener('loaded', inject_scriptable_Media);
-	}*/
 					
 	function inject_scriptable_Media() {
 				

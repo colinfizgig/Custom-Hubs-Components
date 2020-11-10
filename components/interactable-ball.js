@@ -1,13 +1,6 @@
-/*
-if (scene.hasLoaded) {
-	run();
-} else {
-	scene.addEventListener('loaded', run);
-}
-*/
 
 function run() {
-	
+	/*
 	AFRAME.registerComponent('camera-cube-env', {
   schema: {
 	    resolution: { type:'number', default: 128},
@@ -19,14 +12,14 @@ function run() {
 	    repeat: { type:'boolean', default: false}
 	  },
 
-	  /**
-	   * Set if component needs multiple instancing.
-	   */
+	  //
+	  //Set if component needs multiple instancing.
+	  //
 	  multiple: false,
 
-	  /**
-	   * Called once when component is attached. Generally for initial setup.
-	   */
+	  //
+	  //Called once when component is attached. Generally for initial setup.
+	  //
 	  init: function(){
 	    this.counter = this.data.interval;
 		
@@ -107,10 +100,10 @@ function run() {
 
 	  },
 
-	  /**
-	   * Called when component is attached and when component data changes.
-	   * Generally modifies the entity based on the data.
-	   */
+	  //
+	  //Called when component is attached and when component data changes.
+	  //Generally modifies the entity based on the data.
+	  //
 	  update: function (oldData) {
 		 
 		myUpdate(this.cam, this.el, this.el.getObject3D('mesh'));
@@ -134,29 +127,30 @@ function run() {
 		}
 	  },
 
-	  /**
-	   * Called when a component is removed (e.g., via removeAttribute).
-	   * Generally undoes all modifications to the entity.
-	   */
+	  //
+	  //Called when a component is removed (e.g., via removeAttribute).
+	  //Generally undoes all modifications to the entity.
+	   //
 	  remove: function () {},
 
-	  /**
-	   * Called on each scene tick.
-	   */
+	  //
+	  // Called on each scene tick.
+	  //
 	  // tick: function (t) { },
 
-	  /**
-	   * Called when entity pauses.
-	   * Use to stop or remove any dynamic or background behavior such as events.
-	   */
+	  //
+	  // Called when entity pauses.
+	  // Use to stop or remove any dynamic or background behavior such as events.
+	  //
 	  pause: function () { },
 
-	  /**
-	   * Called when entity resumes.
-	   * Use to continue or add any dynamic or background behavior such as events.
-	   */
+	  //
+	  // Called when entity resumes.
+	  //Use to continue or add any dynamic or background behavior such as events.
+	  //
 	  play: function () { }
 	});
+	*/
 				
 	//Query assets in order to setup template
 	let assets = document.querySelector("a-assets");

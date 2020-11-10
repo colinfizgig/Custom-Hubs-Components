@@ -1,0 +1,25 @@
+{
+  "name": "aelatgt-top-level",
+  "version": "1.0.0",
+  "description": "top level node server",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "pm2": "^4.5.0"
+  },
+  "scripts": {
+    "restart": "pm2 startOrRestart ecosystem.config.js",
+    "deploy": "pm2 deploy ecosystem.config.js production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blair MacIntyre <blair@cc.gatech.edu>",
+  "license": "CC BY-NC-SA 4.0"
+}

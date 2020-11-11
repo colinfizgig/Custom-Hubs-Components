@@ -716,6 +716,9 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
 					var myUrls = datums.split(",");
 					var myBody = document.querySelector("body");
 					for(var items of myUrls) {
+						if(items == "noUrls"){
+							break;
+						}
 						console.log("iterating");
 						//inject some scripts based on the returned urls (we may need to split a list or something.
 						var newScript = document.createElement("script");

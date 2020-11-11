@@ -1,0 +1,5 @@
+var config = {};
+
+config.scenes = [{scene: 'Y8SYx7W', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/hubs-slide-show.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js'},{scene: '9codwM0', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/hubs-slide-show.js'},{scene: 'XA6GbLP', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js'},{scene: 'Gm2IlGP', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js'}];
+
+module.exports = config;

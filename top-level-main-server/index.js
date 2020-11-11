@@ -5,7 +5,10 @@ const socketIO = require("socket.io");
 const express = require("express");
 const cors = require('cors')
 
+const config = require('./config');
+
 const app = express();
+
 app.use(cors());
 
 app.use(express.static("public"));
@@ -18,8 +21,11 @@ app.get(
     );
   }
 );
+// mod so it pulls a list from local file
+// check authentication
+// check cors situation
+// figure out getting the vpn to pull from head of a github
 
-const myversion = "c75bc3d1f3d050c5b50385c3c7dbef770d0c692e";
 app.get(
 	"/injectSlideshow",
 	async (req, res) => {
@@ -32,12 +38,26 @@ app.get(
 			}
 			finally{
 				var myScene = req.query.hubscene;
+				var myUrls = "";
+				for (var sceneObj of config.scenes){
+					if(sceneObj.scene == myScene){
+						console.log("scene found: "+ sceneObj.scene);
+						myUrls = sceneObj.urls;
+						console.log("urls to return: "+ myUrls);
+						res.send(myUrls);
+						break;
+					}
+				}
+				if(myUrls == ""){
+					res.send("noUrls");
+				}
+				/*
 				if(myScene == "Y8SYx7W"){
 					res.send("https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/camera-cube-env.js"+","+"https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/hubs-slide-show.js"+","+"https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/interactable-ball.js"
 					);
 				}else{
 					res.send(result);
-				}
+				}*/
 			}
 	});
 

@@ -666,7 +666,7 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
 	////////////////////////////////////////////////////////////////////////////////////////
 	
 	console.log("checking access");
-	console.log(hub.scene.scene_id);
+	console.log(hub.hub_id);
 		//check to see if the scene exists here
 		//let scene = document.querySelector("a-scene");
 		
@@ -674,12 +674,11 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
 		//let version = "43b68247dfb47c581d307f413a055a7fd4d9ba31";
 		//local host check to our Node server.  Should be to node server at some point.
 		//const myScene = "Y8SYx7W";
-		//https://localhost:8080/hub.html?hub_id=5HsuTZ2 is a hub that contains the proper scene
+		//https://localhost:8080/hub.html?hub_id=2MCVA2f is a hub that contains a good scene
 		//for testing purposes.
-		const myScene = hub.scene.scene_id;
-		//const myScene = "1324";
-		//const url = "http://localhost:3000/injectSlideshow/" + myScene;
-		const url = "http://localhost:3000/injectSlideshow?hubscene="+ myScene;
+		const myHub = hub.hub_id;
+
+		const url = "http://localhost:3000/injectScripts?hubid="+ myHub;
 		
 		function makeRequest (method, url) {
 			
@@ -710,7 +709,7 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
 			//fetch(url,{method:'GET', headers: {
 			//'Content-type': 'text/html; charset=UTF-8'}})
 				.then(function (datums) {
-					console.log("got server scene response");
+					console.log("got server hub response");
 					console.log(datums);
 					
 					var myUrls = datums.split(",");

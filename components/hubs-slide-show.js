@@ -36,10 +36,10 @@ AFRAME.registerComponent("slidecounter", {
 
 		async update(oldData) {
 			console.log("update");
-			//this.currentSlide = this.data.index;
+			this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+			
 			if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
 				if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
-					//this.el.emit("owned-pager-page-changed");
 					console.log("owner changed");
 				}
 			}

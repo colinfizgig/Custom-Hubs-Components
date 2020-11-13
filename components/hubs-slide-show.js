@@ -133,7 +133,7 @@ AFRAME.registerComponent("slide-counter", {
 		newEntity.setAttributeNode(tempAtt);
 						
 		// sets the remote hover target component on the object
-		newEntity.setAttribute("is-remote-hover-target", "");
+		newEntity.setAttribute("is-remote-hover-target", {});
 						
 		// the tags component allows you to filter the collisions and interactable
 		// qualities of the entity.  We can reuse tempAtt to set all it's values
@@ -143,20 +143,20 @@ AFRAME.registerComponent("slide-counter", {
 		newEntity.setAttributeNode(tempAtt);
 						
 		// you can set the objects to be destroyed at extreme distances in order to avoid having a bunch of hard to find physics objects falling in your hub
-		newEntity.setAttribute("destroy-at-extreme-distances", "");
+		newEntity.setAttribute("destroy-at-extreme-distances", {});
 						
 		// another component setup.  Check it out in the components in src
-		newEntity.setAttribute("set-xyz-order", "");
+		newEntity.setAttribute("set-xyz-order", {});
 		// important! since the matrix auto update on objects in turned off by default
 		// in order to save compute power
-		newEntity.setAttribute("matrix-auto-update", "");
+		newEntity.setAttribute("matrix-auto-update", {});
 		// whether this object has a hoverable visuals interaction. You may have to add additional child entities to the template to get this to show up.  Check the component to see how it works 
-		newEntity.setAttribute("hoverable-visuals", "");
+		newEntity.setAttribute("hoverable-visuals", {});
 
 		//add the listed-media component
-		newEntity.setAttribute("listed-media", "");
+		newEntity.setAttribute("listed-media", {});
 		//add the use-audio-settings component
-		newEntity.setAttribute("use-audio-system-settings", "");
+		newEntity.setAttribute("use-audio-system-settings", {});
 
 	///////////////////////////////////////////////////////////////////////
 

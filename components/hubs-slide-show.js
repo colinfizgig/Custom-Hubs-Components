@@ -36,7 +36,8 @@ AFRAME.registerComponent("slidecounter", {
 
 		async update(oldData) {
 			console.log("update");
-			this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+			this.currentSlide = this.data.index;
+			console.log(this.currentSlide);
 			
 			if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
 				if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
@@ -56,12 +57,14 @@ AFRAME.registerComponent("slidecounter", {
 				this.currentSlide += 1;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
 				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
+
 			}else{
 				this.currentSlide = 0;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
 				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 			}
-					
+			console.log(this.currentSlide);
+			console.log(this.networkedEl.getAttribute("slidecounter").index;	
 		},
 
 		remove() {

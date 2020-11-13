@@ -154,8 +154,6 @@ AFRAME.registerComponent("slide-counter", {
 		newEntity.setAttribute("matrix-auto-update", {});
 		// whether this object has a hoverable visuals interaction. You may have to add additional child entities to the template to get this to show up.  Check the component to see how it works 
 		newEntity.setAttribute("hoverable-visuals", {});
-		
-		newEntity.setAttribute("media-pager", {});
 
 		//add the listed-media component
 		newEntity.setAttribute("listed-media", {});
@@ -240,6 +238,10 @@ AFRAME.registerComponent("slide-counter", {
 				component: "media-pdf",
 				property: "index"
 			},
+			{
+				component: "slide-counter",
+				property: "index"
+			},
 			"pinnable"
 		],
 		nonAuthorizedComponents: [
@@ -253,10 +255,6 @@ AFRAME.registerComponent("slide-counter", {
 			},
 			{
 				component: "media-pager",
-				property: "index"
-			},
-			{
-				component: "slide-counter",
 				property: "index"
 			}
 		]

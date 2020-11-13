@@ -1,5 +1,5 @@
 
-AFRAME.registerComponent("slide-counter", {
+AFRAME.registerComponent("slidecounter", {
 	schema: {
 		index: { default: 0 },
 		slideScale: {default: 5}
@@ -27,6 +27,7 @@ AFRAME.registerComponent("slide-counter", {
 				this.networkedEl.addEventListener("unpinned", this.update);
 				window.APP.hubChannel.addEventListener("permissions_updated", this.update);
 				this.networkedEl.object3D.scale.setScalar(this.data.slideScale);
+				this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
 				this.setupSlides();
 			})
 			.catch(() => {}); //ignore exception, entity might not be networked
@@ -35,10 +36,11 @@ AFRAME.registerComponent("slide-counter", {
 
 		async update(oldData) {
 			console.log("update");
-			//this.currentSlide = this.data.index;
+			this.currentSlide = this.data.index;
+			console.log(this.currentSlide);
+			
 			if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
 				if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
-					//this.el.emit("owned-pager-page-changed");
 					console.log("owner changed");
 				}
 			}
@@ -54,13 +56,15 @@ AFRAME.registerComponent("slide-counter", {
 			if(this.currentSlide < (this.max -1)){
 				this.currentSlide += 1;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-				this.networkedEl.setAttribute("slide-counter", {index: this.currentSlide});
+				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
+
 			}else{
 				this.currentSlide = 0;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-				this.networkedEl.setAttribute("slide-counter", {index: this.currentSlide});
+				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 			}
-					
+			console.log(this.currentSlide);
+			console.log(this.networkedEl.getAttribute("slidecounter").index);	
 		},
 
 		remove() {
@@ -73,8 +77,9 @@ AFRAME.registerComponent("slide-counter", {
 		},
 
 		setupSlides(){
-			console.log(this.networkedEl.getAttribute("slide-counter").index);
-			this.currentSlide = this.networkedEl.getAttribute("slide-counter").index;
+			console.log(this.networkedEl.getAttribute("slidecounter").index);
+			this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+			console.log(this.currentSlide);
 			this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false})
 			//this.el.setAttribute("networked", { template: "#scriptable-media" } )
 		},
@@ -163,7 +168,7 @@ AFRAME.registerComponent("slide-counter", {
 	///////////////////////////////////////////////////////////////////////
 
 		//add our slide-counter component created below.  I include the setting of index to show how it keeps track of the current slide
-		tempAtt = document.createAttribute("slide-counter")
+		tempAtt = document.createAttribute("slidecounter")
 		// set it to target the class freeze-unpriviliged-menu.
 		tempAtt.value = "index:0"
 		newEntity.setAttributeNode(tempAtt);
@@ -239,7 +244,7 @@ AFRAME.registerComponent("slide-counter", {
 				property: "index"
 			},
 			{
-				component: "slide-counter",
+				component: "slidecounter",
 				property: "index"
 			},
 			"pinnable"

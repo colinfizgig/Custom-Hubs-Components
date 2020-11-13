@@ -133,7 +133,7 @@ AFRAME.registerComponent("slide-counter", {
 		newEntity.setAttributeNode(tempAtt);
 						
 		// sets the remote hover target component on the object
-		//newEntity.setAttribute("is-remote-hover-target", "");
+
 		newEntity.setAttribute("is-remote-hover-target", {});
 						
 		// the tags component allows you to filter the collisions and interactable
@@ -144,7 +144,7 @@ AFRAME.registerComponent("slide-counter", {
 		newEntity.setAttributeNode(tempAtt);
 						
 		// you can set the objects to be destroyed at extreme distances in order to avoid having a bunch of hard to find physics objects falling in your hub
-		//newEntity.setAttribute("destroy-at-extreme-distances", "");
+
 		newEntity.setAttribute("destroy-at-extreme-distances", {});
 						
 		// another component setup.  Check it out in the components in src

@@ -1,5 +1,5 @@
 
-AFRAME.registerComponent("slide-counter", {
+AFRAME.registerComponent("slidecounter", {
 	schema: {
 		index: { default: 0 },
 		slideScale: {default: 5}
@@ -163,7 +163,7 @@ AFRAME.registerComponent("slide-counter", {
 	///////////////////////////////////////////////////////////////////////
 
 		//add our slide-counter component created below.  I include the setting of index to show how it keeps track of the current slide
-		tempAtt = document.createAttribute("slide-counter")
+		tempAtt = document.createAttribute("slidecounter")
 		// set it to target the class freeze-unpriviliged-menu.
 		tempAtt.value = "index:0"
 		newEntity.setAttributeNode(tempAtt);
@@ -239,7 +239,7 @@ AFRAME.registerComponent("slide-counter", {
 				property: "index"
 			},
 			{
-				component: "slide-counter",
+				component: "slidecounter",
 				property: "index"
 			},
 			"pinnable"

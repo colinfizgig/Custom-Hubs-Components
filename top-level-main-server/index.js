@@ -21,13 +21,9 @@ app.get(
     );
   }
 );
-// mod so it pulls a list from local file
-// check authentication
-// check cors situation
-// figure out getting the vpn to pull from head of a github
 
 app.get(
-	"/injectSlideshow",
+	"/injectScripts",
 	async (req, res) => {
 			let result = {}
 			try{
@@ -37,12 +33,12 @@ app.get(
 				result.success = false;
 			}
 			finally{
-				var myScene = req.query.hubscene;
+				var myHub = req.query.hubid;
 				var myUrls = "";
-				for (var sceneObj of config.scenes){
-					if(sceneObj.scene == myScene){
-						console.log("scene found: "+ sceneObj.scene);
-						myUrls = sceneObj.urls;
+				for (var hubObj of config.hubsarray){
+					if(hubObj.hub_id == myHub){
+						console.log("hub found: "+ hubObj.hub_id);
+						myUrls = hubObj.urls;
 						console.log("urls to return: "+ myUrls);
 						res.send(myUrls);
 						break;
@@ -51,13 +47,6 @@ app.get(
 				if(myUrls == ""){
 					res.send("noUrls");
 				}
-				/*
-				if(myScene == "Y8SYx7W"){
-					res.send("https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/camera-cube-env.js"+","+"https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/hubs-slide-show.js"+","+"https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/interactable-ball.js"
-					);
-				}else{
-					res.send(result);
-				}*/
 			}
 	});
 

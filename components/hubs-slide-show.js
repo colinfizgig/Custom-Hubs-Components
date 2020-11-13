@@ -27,6 +27,7 @@ AFRAME.registerComponent("slidecounter", {
 				this.networkedEl.addEventListener("unpinned", this.update);
 				window.APP.hubChannel.addEventListener("permissions_updated", this.update);
 				this.networkedEl.object3D.scale.setScalar(this.data.slideScale);
+				this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
 				this.setupSlides();
 			})
 			.catch(() => {}); //ignore exception, entity might not be networked
@@ -54,11 +55,11 @@ AFRAME.registerComponent("slidecounter", {
 			if(this.currentSlide < (this.max -1)){
 				this.currentSlide += 1;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-				this.networkedEl.setAttribute("slide-counter", {index: this.currentSlide});
+				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 			}else{
 				this.currentSlide = 0;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-				this.networkedEl.setAttribute("slide-counter", {index: this.currentSlide});
+				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 			}
 					
 		},
@@ -73,8 +74,9 @@ AFRAME.registerComponent("slidecounter", {
 		},
 
 		setupSlides(){
-			console.log(this.networkedEl.getAttribute("slide-counter").index);
-			this.currentSlide = this.networkedEl.getAttribute("slide-counter").index;
+			console.log(this.networkedEl.getAttribute("slidecounter").index);
+			this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+			console.log(this.currentSlide);
 			this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false})
 			//this.el.setAttribute("networked", { template: "#scriptable-media" } )
 		},

@@ -5,7 +5,10 @@ const socketIO = require("socket.io");
 const express = require("express");
 const cors = require('cors')
 
+const config = require('./config');
+
 const app = express();
+
 app.use(cors());
 
 app.use(express.static("public"));
@@ -19,9 +22,8 @@ app.get(
   }
 );
 
-const myversion = "c75bc3d1f3d050c5b50385c3c7dbef770d0c692e";
 app.get(
-	"/injectSlideshow",
+	"/injectScripts",
 	async (req, res) => {
 			let result = {}
 			try{
@@ -31,12 +33,19 @@ app.get(
 				result.success = false;
 			}
 			finally{
-				var myScene = req.query.hubscene;
-				if(myScene == "Y8SYx7W"){
-					res.send("https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/camera-cube-env.js"+","+"https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/hubs-slide-show.js"+","+"https://cdn.jsdelivr.net/gh/colinfizgig/Custom-Hubs-Components@"+ myversion +"/components/interactable-ball.js"
-					);
-				}else{
-					res.send(result);
+				var myHub = req.query.hubid;
+				var myUrls = "";
+				for (var hubObj of config.hubsarray){
+					if(hubObj.hub_id == myHub){
+						console.log("hub found: "+ hubObj.hub_id);
+						myUrls = hubObj.urls;
+						console.log("urls to return: "+ myUrls);
+						res.send(myUrls);
+						break;
+					}
+				}
+				if(myUrls == ""){
+					res.send("noUrls");
 				}
 			}
 	});

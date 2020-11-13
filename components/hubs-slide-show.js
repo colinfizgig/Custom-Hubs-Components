@@ -64,7 +64,7 @@ AFRAME.registerComponent("slidecounter", {
 				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 			}
 			console.log(this.currentSlide);
-			console.log(this.networkedEl.getAttribute("slidecounter").index;	
+			console.log(this.networkedEl.getAttribute("slidecounter").index);	
 		},
 
 		remove() {

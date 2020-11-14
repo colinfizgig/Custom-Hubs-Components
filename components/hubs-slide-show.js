@@ -1,111 +1,135 @@
-const slidesetup = require('https://colinfizgig.github.io/Custom-Hubs-Components/components/slideconfig.js');
+// because we load the links to the scripts from a remote repository
+// we need to create a script which can be set to access that remote file.
+// location of the script that contains an array of the slides
+	const slidesetup ='https://colinfizgig.github.io/Custom-Hubs-Components/components/slideconfig.js';
+	
+//create a script placeholder
+	var slideScript = document.createElement("script");
+	
+//set the placeholder type
+	slideScript.type = 'text/javascript';
+	
+//create a src attribute variable
+	var srcAt = document.createAttribute('src');
+	
+//set the value of the src to the hosted file above
+	srcAt.value = slidesetup;
+	
+//append the src to the script placeholder
+	slideScript.setAttributeNode(srcAt);
+	
+//append the script to the body 
+	var bodyElement = document.querySelector("body");
+	bodyElement.appendChild(slideScript);
 
-AFRAME.registerComponent("slidecounter", {
-	schema: {
-		index: { default: 0 },
-		slideScale: {default: 5}
-	},
-
-	init() {
-		console.log("init loaded");
-		this.onNext = this.onNext.bind(this);
-		this.update = this.update.bind(this);
-		this.removeAllMedia = this.removeAllMedia.bind(this);
-		this.setupSlides = this.setupSlides.bind(this);
-		this.cleanUpSlides = this.cleanUpSlides.bind(this);
-
-		this.el.object3D.addEventListener("interact", this.onNext);
-
-		this.content = slidesetup;
-		this.max = this.content.length;
-
-		NAF.utils
-			.getNetworkedEntity(this.el)
-			.then(networkedEl => {
-				this.networkedEl = networkedEl;
-				this.networkedEl.addEventListener("pinned", this.update);
-				this.networkedEl.addEventListener("unpinned", this.update);
-				window.APP.hubChannel.addEventListener("permissions_updated", this.update);
-				this.networkedEl.object3D.scale.setScalar(this.data.slideScale);
-				this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
-				this.setupSlides();
-			})
-			.catch(() => {}); //ignore exception, entity might not be networked
-
+				
+	function inject_slideshow_Media() {
+		
+		AFRAME.registerComponent("slidecounter", {
+		schema: {
+			index: { default: 0 },
+			slideScale: {default: 5}
 		},
 
-		async update(oldData) {
-			console.log("update");
-			this.currentSlide = this.data.index;
-			console.log(this.currentSlide);
+		init() {
+			console.log("init loaded");
+			this.onNext = this.onNext.bind(this);
+			this.update = this.update.bind(this);
+			this.removeAllMedia = this.removeAllMedia.bind(this);
+			this.setupSlides = this.setupSlides.bind(this);
+			this.cleanUpSlides = this.cleanUpSlides.bind(this);
+
+			this.el.object3D.addEventListener("interact", this.onNext);
 			
-			if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
-				if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
-					console.log("owner changed");
+			//get our content from the variable in the script injected above.
+			this.content = slideconfig;
+			this.max = this.content.length;
+
+			NAF.utils
+				.getNetworkedEntity(this.el)
+				.then(networkedEl => {
+					this.networkedEl = networkedEl;
+					this.networkedEl.addEventListener("pinned", this.update);
+					this.networkedEl.addEventListener("unpinned", this.update);
+					window.APP.hubChannel.addEventListener("permissions_updated", this.update);
+					this.networkedEl.object3D.scale.setScalar(this.data.slideScale);
+					this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+					this.setupSlides();
+				})
+				.catch(() => {}); //ignore exception, entity might not be networked
+
+			},
+
+			async update(oldData) {
+				console.log("update");
+				this.currentSlide = this.data.index;
+				console.log(this.currentSlide);
+				
+				if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
+					if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
+						console.log("owner changed");
+					}
+				}
+			},
+
+			onNext() {
+						
+				if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)){ 
+					console.log("not owned");
+					return;
+				}
+			// currently the index is not updating over NAF even though it should be networked.
+				if(this.currentSlide < (this.max -1)){
+					this.currentSlide += 1;
+					this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
+					this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
+
+				}else{
+					this.currentSlide = 0;
+					this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
+					this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
+				}
+				console.log(this.currentSlide);
+				console.log(this.networkedEl.getAttribute("slidecounter").index);	
+			},
+
+			remove() {
+				if (this.networkedEl) {
+					this.networkedEl.removeEventListener("pinned", this.update);
+					this.networkedEl.removeEventListener("unpinned", this.update);
+				}
+
+				window.APP.hubChannel.removeEventListener("permissions_updated", this.update);
+			},
+
+			setupSlides(){
+				console.log(this.networkedEl.getAttribute("slidecounter").index);
+				this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+				console.log(this.currentSlide);
+				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false})
+				//this.el.setAttribute("networked", { template: "#scriptable-media" } )
+			},
+
+			cleanUpSlides(){
+				this.loaded.map( s => { s.setAttribute("pinnable", {pinned:false}); s.remove()} )
+				this.loaded = []
+			},
+
+			removeAllMedia(){
+				for (var el of document.querySelectorAll("[media-loader]")){
+					var match = el.components["media-loader"].attrValue.src.match('fabien.benetou.fr')
+					if (match && match.length>0){
+						NAF.utils.getNetworkedEntity(el).then(networkedEl => {
+							const mine = NAF.utils.isMine(networkedEl)
+							if (!mine) var owned = NAF.utils.takeOwnership(networkedEl)
+							networkedEl.components["set-unowned-body-kinematic"].setBodyKinematic()
+							networkedEl.setAttribute("pinnable", {pinned:false})
+							networkedEl.remove()
+						})
+					}
 				}
 			}
-		},
-
-		onNext() {
-					
-			if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)){ 
-				console.log("not owned");
-				return;
-			}
-		// currently the index is not updating over NAF even though it should be networked.
-			if(this.currentSlide < (this.max -1)){
-				this.currentSlide += 1;
-				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
-
-			}else{
-				this.currentSlide = 0;
-				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
-			}
-			console.log(this.currentSlide);
-			console.log(this.networkedEl.getAttribute("slidecounter").index);	
-		},
-
-		remove() {
-			if (this.networkedEl) {
-				this.networkedEl.removeEventListener("pinned", this.update);
-				this.networkedEl.removeEventListener("unpinned", this.update);
-			}
-
-			window.APP.hubChannel.removeEventListener("permissions_updated", this.update);
-		},
-
-		setupSlides(){
-			console.log(this.networkedEl.getAttribute("slidecounter").index);
-			this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
-			console.log(this.currentSlide);
-			this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false})
-			//this.el.setAttribute("networked", { template: "#scriptable-media" } )
-		},
-
-		cleanUpSlides(){
-			this.loaded.map( s => { s.setAttribute("pinnable", {pinned:false}); s.remove()} )
-			this.loaded = []
-		},
-
-		removeAllMedia(){
-			for (var el of document.querySelectorAll("[media-loader]")){
-				var match = el.components["media-loader"].attrValue.src.match('fabien.benetou.fr')
-				if (match && match.length>0){
-					NAF.utils.getNetworkedEntity(el).then(networkedEl => {
-						const mine = NAF.utils.isMine(networkedEl)
-						if (!mine) var owned = NAF.utils.takeOwnership(networkedEl)
-						networkedEl.components["set-unowned-body-kinematic"].setBodyKinematic()
-						networkedEl.setAttribute("pinnable", {pinned:false})
-						networkedEl.remove()
-					})
-				}
-			}
-		}
-	});
-					
-	function inject_scriptable_Media() {
+		});
 				
 		console.log("inject loaded");
 		//Query assets in order to setup template
@@ -113,7 +137,7 @@ AFRAME.registerComponent("slidecounter", {
 		// create a new template variable
 		let newTemplate = document.createElement("template");
 		// create template id
-		newTemplate.id = "scriptable-media";
+		newTemplate.id = "slideshow-media";
 		// create a new entity for the template so we can append it to the assets later
 		// normally this is done in the Hubs.html "bootstrap" file
 		let newEntity = document.createElement("a-entity");
@@ -207,7 +231,7 @@ AFRAME.registerComponent("slidecounter", {
 	// sensitivity using the function above if they modify the transforms.
 	NAF.schemas.add({
 		// template to add (created above)
-		template: "#scriptable-media",
+		template: "#slideshow-media",
 		// we need to tell NAF what components to share between clients
 		// in this case we share the position, rotation, scale, the media-loader (which loads the media)
 		// the media-video time attribute(a component registered in the media-loader in case you are looking for it)
@@ -267,11 +291,11 @@ AFRAME.registerComponent("slidecounter", {
 
 }
 
-inject_scriptable_Media();
+inject_slideshow_Media;
 
 function addSlides(){
 	var el = document.createElement("a-entity")
-	el.setAttribute("networked", { template: "#scriptable-media" } )
+	el.setAttribute("networked", { template: "#slideshow-media" } )
 	el.setAttribute("media-loader", {animate: false, fileIsOwned: true})
 	el.object3D.position.y = 2;
 	AFRAME.scenes[0].appendChild(el)

@@ -1,28 +1,4 @@
-// because we load the links to the scripts from a remote repository
-// we need to create a script which can be set to access that remote file.
-// location of the script that contains an array of the slides
-	const slidesetup ='https://colinfizgig.github.io/Custom-Hubs-Components/components/slideconfig.js';
-	
-//create a script placeholder
-	var slideScript = document.createElement("script");
-	
-//set the placeholder type
-	slideScript.type = 'text/javascript';
-	
-//create a src attribute variable
-	var srcAt = document.createAttribute('src');
-	
-//set the value of the src to the hosted file above
-	srcAt.value = slidesetup;
-	
-//append the src to the script placeholder
-	slideScript.setAttributeNode(srcAt);
-	
-//append the script to the body 
-	var bodyElement = document.querySelector("body");
-	bodyElement.appendChild(slideScript);
-
-				
+		
 	function inject_slideshow_Media() {
 		
 		AFRAME.registerComponent("slidecounter", {

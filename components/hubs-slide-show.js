@@ -42,7 +42,7 @@
 			this.el.object3D.addEventListener("interact", this.onNext);
 			
 			//get our content from the variable in the script injected above.
-			this.content = slideconfig;
+			this.content = slideconfig.slides;
 			this.max = this.content.length;
 
 			NAF.utils

@@ -267,7 +267,7 @@
 
 }
 
-inject_slideshow_Media;
+inject_slideshow_Media();
 
 function addSlides(){
 	var el = document.createElement("a-entity")

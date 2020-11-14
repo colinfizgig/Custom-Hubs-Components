@@ -1,3 +1,4 @@
+const slidesetup = require('https://colinfizgig.github.io/Custom-Hubs-Components/components/slideconfig.js');
 
 AFRAME.registerComponent("slidecounter", {
 	schema: {
@@ -15,9 +16,8 @@ AFRAME.registerComponent("slidecounter", {
 
 		this.el.object3D.addEventListener("interact", this.onNext);
 
-		this.content = ["https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/1.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/2.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/3.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/4.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/5.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/6.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/7.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/8.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/9.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/10.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/11.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/12.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/13.jpg","https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/14.jpg"]
+		this.content = slidesetup;
 		this.max = this.content.length;
-		this.backupImgSrc = 'https://hubs-proxy.com/https://fabien.benetou.fr/pub/home/AWE_Berlin/'
 
 		NAF.utils
 			.getNetworkedEntity(this.el)

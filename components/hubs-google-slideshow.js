@@ -238,7 +238,7 @@
 				var slideId = presentation.slides[this.currentSlide].objectId;
 				async function loadSlides() {
 						var myImgUrl;
-						console.log(myImgUrl);
+						console.log("the value of myImgUrl = "+ myImgUrl);
 						if(myImgUrl == null) {
 							myImgUrl = await displayThumb(slideId);
 						}else{

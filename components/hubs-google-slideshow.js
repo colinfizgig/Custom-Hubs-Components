@@ -203,6 +203,7 @@
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
 						}
 					}
+					loadSlides();
 
 				}else{
 					this.currentSlide = 0;
@@ -217,6 +218,7 @@
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
 						}
 					}
+					loadSlides();
 				}
 				console.log(this.currentSlide);
 				console.log(this.networkedEl.getAttribute("gslidecounter").index);	
@@ -245,6 +247,7 @@
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
 						}
 					}
+				loadSlides();
 				//this.el.setAttribute("networked", { template: "#scriptable-media" } )
 			},
 

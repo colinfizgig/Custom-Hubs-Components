@@ -238,17 +238,13 @@
 				this.currentSlide = this.networkedEl.getAttribute("gslidecounter").index;
 				console.log(this.currentSlide);
 				var slideId = presentation.slides[this.currentSlide].objectId;
-				async function loadSlides() {
-						var myImgUrl = (new Promise( displayThumb(slideId)))
-						.then((value) => {
-							console.log(value);
-							this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false});
-						})
-						.catch((error) => {
-							console.log(error);
-						})
-					}
-				loadSlides();
+				
+				var myImgUrl = (new Promise( displayThumb(slideId)))
+					.then((value) => {
+						console.log(value);
+						this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false});
+					})
+
 				//this.el.setAttribute("networked", { template: "#scriptable-media" } )
 			},
 

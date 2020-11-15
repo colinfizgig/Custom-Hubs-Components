@@ -239,12 +239,13 @@
 				console.log(this.currentSlide);
 				var slideId = presentation.slides[this.currentSlide].objectId;
 				async function loadSlides() {
-						var myImgUrl = await displayThumb(slideId);
-						
-						myImgUrl.then((value) => {
+						var myImgUrl = 
+						(new Promise ( displayThumb(slideId))
+						.then((value) => {
 							console.log(value);
 							this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false});
 						})
+						.catch(console.log("error"));
 					}
 				loadSlides();
 				//this.el.setAttribute("networked", { template: "#scriptable-media" } )

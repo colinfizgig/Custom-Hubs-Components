@@ -245,9 +245,6 @@
 							console.log(value);
 							this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false});
 						})
-						.catch((error) => {
-							console.log(error);
-						})
 					}
 				loadSlides();
 				//this.el.setAttribute("networked", { template: "#scriptable-media" } )

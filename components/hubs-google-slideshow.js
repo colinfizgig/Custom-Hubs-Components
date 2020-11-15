@@ -245,8 +245,8 @@
 							console.log(value);
 							this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false});
 						})
-						.catch({
-							console.log("error");
+						.catch((error) => {
+							console.log(error);
 						})
 					}
 				loadSlides();

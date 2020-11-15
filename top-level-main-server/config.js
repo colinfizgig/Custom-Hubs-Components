@@ -9,7 +9,7 @@ var config = {};
 
 config.hubsarray = [
 	{hub_id: '2MCVA2f', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/slideconfig.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/hubs-slide-show.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js'},
-	{hub_id: '8T88rLN', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/hubs-google-slideshow.js'},
+	{hub_id: '8T88rLN', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/hubs-google-slideshow.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/gslides-kicker.js'},
 	{hub_id: '5HsuTZ2', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/slideconfig.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/hubs-slide-show.js'},
 	{hub_id: 'kBquF8A', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js'},
 	{hub_id: 'DVeQzPW', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js'}

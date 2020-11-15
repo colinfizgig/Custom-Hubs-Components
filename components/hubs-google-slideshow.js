@@ -408,8 +408,11 @@
 
 inject_google_slideshow();
 
-function addSlides(){
+function signIn(){
 	gapi.auth2.getAuthInstance().signIn();
+}
+
+function addSlides(){
 	var el = document.createElement("a-entity")
 	el.setAttribute("networked", { template: "#google-slideshow" } )
 	el.setAttribute("media-loader", {animate: false, fileIsOwned: true})

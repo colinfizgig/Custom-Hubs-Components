@@ -241,10 +241,10 @@
 				async function loadSlides() {
 						var myImgUrl = await displayThumb(slideId);
 						
-						myImgUrl.then((value) => 
+						myImgUrl.then((value) => {
 							console.log(value);
-							this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false})
-						)
+							this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false});
+						})
 					}
 				loadSlides();
 				//this.el.setAttribute("networked", { template: "#scriptable-media" } )

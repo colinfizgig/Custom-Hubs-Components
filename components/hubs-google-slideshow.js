@@ -87,10 +87,11 @@
 		  pageObjectId: slideObj,
 		  "thumbnailProperties.mimeType": "PNG",
 		  "thumbnailProperties.thumbnailSize": "MEDIUM"
-        }).then(function(response) {
+        })
+		.then(function(response) {
           //slideImg = response.result;
-		  console.log(response.contentUrl);
-		  return response.contentUrl;
+		  console.log(response.result.contentUrl);
+		  return response.result.contentUrl;
         }, function(response) {
           appendPre('Error: ' + response.result.error.message);
         });

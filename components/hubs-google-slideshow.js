@@ -241,7 +241,7 @@
 				async function loadSlides() {
 						var myImgUrl;
 						console.log("the value of myImgUrl = "+ myImgUrl);
-						if(myImgUrl == "undefined") {
+						if(myImgUrl == undefined) {
 							myImgUrl = await displayThumb(slideId);
 						}else{
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});

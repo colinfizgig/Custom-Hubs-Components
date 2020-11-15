@@ -239,13 +239,12 @@
 				console.log(this.currentSlide);
 				var slideId = presentation.slides[this.currentSlide].objectId;
 				async function loadSlides() {
-						var myImgUrl;
-						console.log("the value of myImgUrl = "+ myImgUrl);
-						if(myImgUrl == undefined) {
-							myImgUrl = await displayThumb(slideId);
-						}else{
-							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
-						}
+						var myImgUrl = await displayThumb(slideId);
+						
+						myImgUrl.then((value) => 
+							console.log(value);
+							this.el.setAttribute("media-loader", {src: value, fitToBox: true, resolve: false})
+						)
 					}
 				loadSlides();
 				//this.el.setAttribute("networked", { template: "#scriptable-media" } )

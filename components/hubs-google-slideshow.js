@@ -124,12 +124,9 @@
 		myBody.appendChild(gKickScript);
 	}
 	
-	if(typeof gapi === 'object') {
-		console.log("google api esists");
-	}else{
-		console.log("loading google api");
-		createClientLoad();
-	}
+
+	createClientLoad();
+
 
 	  
 	// code for injecting component and templates into Hubs

@@ -195,7 +195,7 @@
 					this.currentSlide += 1;
 					var slideId = presentation.slides[this.currentSlide].objectId;
 					
-					async function () {
+					async function loadSlides () {
 						var myImgUrl = "";
 						if(myImgUrl == "") {
 							myImgUrl = await displayThumb(slideId);
@@ -208,7 +208,7 @@
 				}else{
 					this.currentSlide = 0;
 					var slideId = presentation.slides[this.currentSlide].objectId;
-					async function () {
+					async function loadSlides() {
 						var myImgUrl = "";
 						if(myImgUrl == "") {
 							myImgUrl = await displayThumb(slideId);
@@ -236,7 +236,7 @@
 				this.currentSlide = this.networkedEl.getAttribute("gslidecounter").index;
 				console.log(this.currentSlide);
 				var slideId = presentation.slides[this.currentSlide].objectId;
-				async function () {
+				async function loadSlides() {
 						var myImgUrl = "";
 						if(myImgUrl == "") {
 							myImgUrl = await displayThumb(slideId);

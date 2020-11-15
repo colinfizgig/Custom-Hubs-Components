@@ -195,13 +195,12 @@
 					this.currentSlide += 1;
 					var slideId = presentation.slides[this.currentSlide].objectId;
 					
-					async function loadSlides () {
-						var myImgUrl = "";
-						if(myImgUrl == "") {
+					async function loadSlides() {
+						var myImgUrl;
+						if(myImgUrl == null) {
 							myImgUrl = await displayThumb(slideId);
 						}else{
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
-							this.networkedEl.setAttribute("gslidecounter", {index: this.currentSlide});
 						}
 					}
 
@@ -209,12 +208,11 @@
 					this.currentSlide = 0;
 					var slideId = presentation.slides[this.currentSlide].objectId;
 					async function loadSlides() {
-						var myImgUrl = "";
-						if(myImgUrl == "") {
+						var myImgUrl;
+						if(myImgUrl == null) {
 							myImgUrl = await displayThumb(slideId);
 						}else{
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
-							this.networkedEl.setAttribute("gslidecounter", {index: this.currentSlide});
 						}
 					}
 				}
@@ -237,8 +235,8 @@
 				console.log(this.currentSlide);
 				var slideId = presentation.slides[this.currentSlide].objectId;
 				async function loadSlides() {
-						var myImgUrl = "";
-						if(myImgUrl == "") {
+						var myImgUrl;
+						if(myImgUrl == null) {
 							myImgUrl = await displayThumb(slideId);
 						}else{
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});

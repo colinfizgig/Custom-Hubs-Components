@@ -197,7 +197,7 @@
 					
 					async function loadSlides() {
 						var myImgUrl;
-						if(myImgUrl == null) {
+						if(myImgUrl == "undefined") {
 							myImgUrl = await displayThumb(slideId);
 						}else{
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
@@ -211,7 +211,7 @@
 					async function loadSlides() {
 						var myImgUrl;
 						console.log(myImgUrl);
-						if(myImgUrl == null) {
+						if(myImgUrl == "undefined") {
 							
 							myImgUrl = await displayThumb(slideId);
 						}else{
@@ -241,7 +241,7 @@
 				async function loadSlides() {
 						var myImgUrl;
 						console.log("the value of myImgUrl = "+ myImgUrl);
-						if(myImgUrl == null) {
+						if(myImgUrl == "undefined") {
 							myImgUrl = await displayThumb(slideId);
 						}else{
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});

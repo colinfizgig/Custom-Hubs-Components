@@ -1,5 +1,6 @@
 function createClientLoad () {
-	var mybody = document.querySelector("body");
+	
+	var myBody = document.querySelector("body");
 	
 	var gKickScript = document.createElement("script");
 	//gKickScript.type = 'text/javascript';

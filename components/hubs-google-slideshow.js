@@ -96,7 +96,7 @@
 	}
 	
 	// we need to create a script for the google api that kicks off the init when it loads
-	
+	/*
 	function createClientLoad () {
 		var mybody = document.querySelector("body");
 		
@@ -123,6 +123,7 @@
 
 		myBody.appendChild(gKickScript);
 	}
+	*/
 	
 
 	//createClientLoad();

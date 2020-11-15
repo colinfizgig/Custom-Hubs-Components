@@ -209,7 +209,9 @@
 					var slideId = presentation.slides[this.currentSlide].objectId;
 					async function loadSlides() {
 						var myImgUrl;
+						console.log(myImgUrl);
 						if(myImgUrl == null) {
+							
 							myImgUrl = await displayThumb(slideId);
 						}else{
 							this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
@@ -236,6 +238,7 @@
 				var slideId = presentation.slides[this.currentSlide].objectId;
 				async function loadSlides() {
 						var myImgUrl;
+						console.log(myImgUrl);
 						if(myImgUrl == null) {
 							myImgUrl = await displayThumb(slideId);
 						}else{

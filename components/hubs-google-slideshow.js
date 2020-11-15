@@ -89,6 +89,7 @@
 		  "thumbnailProperties.thumbnailSize": "MEDIUM"
         }).then(function(response) {
           //slideImg = response.result;
+		  console.log(response.contentUrl);
 		  return response.contentUrl;
         }, function(response) {
           appendPre('Error: ' + response.result.error.message);

@@ -194,13 +194,15 @@
 				if(this.currentSlide < (this.max -1)){
 					this.currentSlide += 1;
 					var slideId = presentation.slides[currentSlide].objectId;
-					this.el.setAttribute("media-loader", {src: getThumbnail(slideId), fitToBox: true, resolve: false});
+					var myImgUrl = displayThumb(slideId);
+					this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
 					this.networkedEl.setAttribute("gslidecounter", {index: this.currentSlide});
 
 				}else{
 					this.currentSlide = 0;
 					var slideId = presentation.slides[currentSlide].objectId;
-					this.el.setAttribute("media-loader", {src: getThumbnail(slideId), fitToBox: true, resolve: false});
+					var myImgUrl = displayThumb(slideId);
+					this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
 					this.networkedEl.setAttribute("gslidecounter", {index: this.currentSlide});
 				}
 				console.log(this.currentSlide);
@@ -221,7 +223,8 @@
 				this.currentSlide = this.networkedEl.getAttribute("gslidecounter").index;
 				console.log(this.currentSlide);
 				var slideId = presentation.slides[currentSlide].objectId;
-				this.el.setAttribute("media-loader", {src: getThumbnail(slideId), fitToBox: true, resolve: false});
+				var myImgUrl = displayThumb(slideId);
+				this.el.setAttribute("media-loader", {src: myImgUrl, fitToBox: true, resolve: false});
 				//this.el.setAttribute("networked", { template: "#scriptable-media" } )
 			},
 

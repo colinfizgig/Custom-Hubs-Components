@@ -138,10 +138,10 @@
 				this.currentSlide = this.data.index;
 				
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
-				
+
 				if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
 					if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
+						this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 					}
 				}
 			},

@@ -228,7 +228,12 @@
 		let tempAtt = document.createAttribute("body-helper");
 		tempAtt.value = "type: static; mass: 1; collisionFilterGroup: 1; collisionFilterMask: 15;";
 		newEntity.setAttributeNode(tempAtt);
-						
+		
+		//owned-object-limiter
+		tempAtt = document.createAttribute("owned-object-limiter");
+		tempAtt.value = "counter: #media-counter";
+		newEntity.setAttributeNode(tempAtt);
+				
 		// sets the remote hover target component on the object
 
 		newEntity.setAttribute("is-remote-hover-target", "");
@@ -237,7 +242,7 @@
 		// qualities of the entity.  We can reuse tempAtt to set all it's values
 		tempAtt = document.createAttribute("tags")
 		// set it to be a hand collision target, holdable, give it a hand constraint, a remote constraint, and set to be inspectable with a right click.
-		tempAtt.value = "isHandCollisionTarget: true; isHoldable: false; offersHandConstraint: false; offersRemoteConstraint: false; inspectable: false; singleActionButton:true;"
+		tempAtt.value = "isHandCollisionTarget: true; isHoldable: false; offersHandConstraint: true; offersRemoteConstraint: true; inspectable: true; singleActionButton:true;"
 		newEntity.setAttributeNode(tempAtt);
 						
 		// you can set the objects to be destroyed at extreme distances in order to avoid having a bunch of hard to find physics objects falling in your hub
@@ -251,6 +256,16 @@
 		newEntity.setAttribute("matrix-auto-update", "");
 		// whether this object has a hoverable visuals interaction. You may have to add additional child entities to the template to get this to show up.  Check the component to see how it works 
 		newEntity.setAttribute("hoverable-visuals", "");
+		
+		//position-at-border__freeze
+		tempAtt = document.createAttribute("position-at-border__freeze");
+		tempAtt.value = "target:.freeze-menu";
+		newEntity.setAttributeNode(tempAtt);
+		
+		//position-at-border__freeze-unprivileged
+		tempAtt = document.createAttribute("position-at-border__freeze-unprivileged");
+		tempAtt.value = "target:.freeze-unprivileged-menu";
+		newEntity.setAttributeNode(tempAtt);
 
 		//add the listed-media component
 		newEntity.setAttribute("listed-media", "");

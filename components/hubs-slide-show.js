@@ -10,13 +10,12 @@
 		  init() {
 			this.onNext = this.onNext.bind(this);
 			this.onPrev = this.onPrev.bind(this);
-			this.onSnap = this.onSnap.bind(this);
 			this.update = this.update.bind(this);
 			
 			this.content = slideconfig.slides;
 			this.data.maxIndex = this.content.length - 1;
 
-			this.el.setAttribute("hover-menu__pager", { template: "#pager-hover-menu", isFlat: true });
+			this.el.setAttribute("hover-menu__pager", { template: "#slidepager-hover-menu", isFlat: true });
 			this.el.components["hover-menu__pager"].getHoverMenu().then(menu => {
 			  // If we got removed while waiting, do nothing.
 			  if (!this.el.parentNode) return;
@@ -24,15 +23,13 @@
 			  this.hoverMenu = menu;
 			  this.nextButton = this.el.querySelector(".next-button [text-button]");
 			  this.prevButton = this.el.querySelector(".prev-button [text-button]");
-			  this.snapButton = this.el.querySelector(".snap-button [text-button]");
 			  this.pageLabel = this.el.querySelector(".page-label");
 
 			  this.nextButton.object3D.addEventListener("interact", this.onNext);
 			  this.prevButton.object3D.addEventListener("interact", this.onPrev);
-			  this.snapButton.object3D.addEventListener("interact", this.onSnap);
 
 			  this.update();
-			  this.el.emit("pager-loaded");
+			  //this.el.emit("pager-loaded");
 			});
 
 			NAF.utils
@@ -81,10 +78,6 @@
 			this.el.setAttribute("slidemenu-pager", "index", newIndex);
 		  },
 
-		  onSnap() {
-			this.el.emit("pager-snap-clicked");
-		  },
-
 		  remove() {
 			if (this.networkedEl) {
 			  this.networkedEl.removeEventListener("pinned", this.update);
@@ -95,7 +88,27 @@
 		  }
 		});
 
+		//Query assets in order to setup template
+		let assets = document.querySelector("a-assets");
+		// create a new template variable
+		let pageHoverTemplate = document.createElement("template");
+		// create template id
+		pageHoverTemplate.id = "slidepager-hover-menu";
+		// create a new entity for the template so we can append it to the assets later
+		// normally this is done in the Hubs.html "bootstrap" file
+		let menuEntity = document.createElement("a-entity");
+
+		menuEntity.setAttribute("class", "ui interactable-ui hover-container");
+		menuEntity.setAttribute("visible", "false");
 		
+		menuEntity.innerHTML = "<a-entity class='prev-button' position='-0.35 0 0'><a-entity is-remote-hover-target tags='singleActionButton:true; isHoverMenuChild: true;' mixin='rounded-text-button' slice9='width: 0.2'><a-entity sprite icon-button='image: prev.png; hoverImage: prev.png;' scale='0.075 0.075 0.075' position='0 0 0.001' ></a-entity></a-entity></a-entity><a-entity class='page-label' position='0 -0.2 0' text='value:.; width:2; align:center;' text-raycast-hack></a-entity><a-entity class='next-button' position='0.35 0 0'><a-entity is-remote-hover-target tags='singleActionButton:true; isHoverMenuChild: true;' mixin='rounded-text-button' slice9='width: 0.2'><a-entity sprite icon-button='image: next.png; hoverImage: next.png;' scale='0.075 0.075 0.075' position='0 0 0.001' ></a-entity></a-entity></a-entity>";
+		
+		pageHoverTemplate.content.appendChild(menuEntity);
+						
+		// once the template is created you append it to the assets
+		assets.appendChild(pageHoverTemplate);
+		
+
 		AFRAME.registerComponent("slidecounter", {
 		schema: {
 			index: { default: 0 },
@@ -198,10 +211,7 @@
 				}
 			}
 		});
-				
-		console.log("inject loaded");
-		//Query assets in order to setup template
-		let assets = document.querySelector("a-assets");
+
 		// create a new template variable
 		let newTemplate = document.createElement("template");
 		// create template id

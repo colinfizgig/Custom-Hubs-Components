@@ -14,7 +14,7 @@
 			this.update = this.update.bind(this);
 			
 			this.content = slideconfig.slides;
-			this.data.maxIndex = this.content.length;
+			this.data.maxIndex = this.content.length - 1;
 
 			this.el.setAttribute("hover-menu__pager", { template: "#pager-hover-menu", isFlat: true });
 			this.el.components["hover-menu__pager"].getHoverMenu().then(menu => {
@@ -42,6 +42,7 @@
 				this.networkedEl.addEventListener("pinned", this.update);
 				this.networkedEl.addEventListener("unpinned", this.update);
 				window.APP.hubChannel.addEventListener("permissions_updated", this.update);
+				this.data.index = this.networkedEl.getAttribute("slidecounter").index;
 			  })
 			  .catch(() => {}); //ignore exception, entity might not be networked
 			
@@ -353,6 +354,10 @@
 				component: "slidecounter",
 				property: "index"
 			},
+			{
+				component: "slidemenu-pager",
+				property: "index"
+			},
 			"pinnable"
 		],
 		nonAuthorizedComponents: [
@@ -363,10 +368,6 @@
 			{
 				component: "media-video",
 				property: "videoPaused"
-			},
-			{
-				component: "slidemenu-pager",
-				property: "index"
 			}
 		]
 	});

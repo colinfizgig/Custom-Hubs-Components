@@ -1,6 +1,104 @@
 		
 	function inject_slideshow_Media() {
 		
+		AFRAME.registerComponent("slidemenu-pager", {
+		  schema: {
+			index: { default: 0 },
+			maxIndex: { default: 0 }
+		  },
+
+		  init() {
+			this.onNext = this.onNext.bind(this);
+			this.onPrev = this.onPrev.bind(this);
+			this.onSnap = this.onSnap.bind(this);
+			this.update = this.update.bind(this);
+			
+			this.content = slideconfig.slides;
+			this.data.maxIndex = this.content.length;
+
+			this.el.setAttribute("hover-menu__pager", { template: "#pager-hover-menu", isFlat: true });
+			this.el.components["hover-menu__pager"].getHoverMenu().then(menu => {
+			  // If we got removed while waiting, do nothing.
+			  if (!this.el.parentNode) return;
+
+			  this.hoverMenu = menu;
+			  this.nextButton = this.el.querySelector(".next-button [text-button]");
+			  this.prevButton = this.el.querySelector(".prev-button [text-button]");
+			  this.snapButton = this.el.querySelector(".snap-button [text-button]");
+			  this.pageLabel = this.el.querySelector(".page-label");
+
+			  this.nextButton.object3D.addEventListener("interact", this.onNext);
+			  this.prevButton.object3D.addEventListener("interact", this.onPrev);
+			  this.snapButton.object3D.addEventListener("interact", this.onSnap);
+
+			  this.update();
+			  this.el.emit("pager-loaded");
+			});
+
+			NAF.utils
+			  .getNetworkedEntity(this.el)
+			  .then(networkedEl => {
+				this.networkedEl = networkedEl;
+				this.networkedEl.addEventListener("pinned", this.update);
+				this.networkedEl.addEventListener("unpinned", this.update);
+				window.APP.hubChannel.addEventListener("permissions_updated", this.update);
+			  })
+			  .catch(() => {}); //ignore exception, entity might not be networked
+			
+			/*
+			this.el.addEventListener("pdf-loaded", async () => {
+			  this.update();
+			});*/
+		  },
+
+		  async update(oldData) {
+			if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
+			  if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
+				this.el.emit("owned-pager-page-changed");
+			  }
+			}
+
+			if (this.pageLabel) {
+			  this.pageLabel.setAttribute("text", "value", `${this.data.index + 1}/${this.data.maxIndex + 1}`);
+			}
+
+			if (this.prevButton && this.nextButton) {
+			  const pinnableElement = this.el.components["media-loader"].data.linkedEl || this.el;
+			  const isPinned = pinnableElement.components.pinnable && pinnableElement.components.pinnable.data.pinned;
+			  this.prevButton.object3D.visible = this.nextButton.object3D.visible =
+				!isPinned || window.APP.hubChannel.can("pin_objects");
+			}
+		  },
+
+		  onNext() {
+			if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)) return;
+			const newIndex = Math.min(this.data.index + 1, this.data.maxIndex);
+			this.el.setAttribute("slidecounter", "index", newIndex);
+			this.el.setAttribute("slidemenu-pager", "index", newIndex);
+		  },
+
+		  onPrev() {
+			if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)) return;
+			const newIndex = Math.max(this.data.index - 1, 0);
+			this.el.setAttribute("slidecounter", "index", newIndex);
+			this.el.setAttribute("slidemenu-pager", "index", newIndex);
+		  },
+
+		  onSnap() {
+			this.el.emit("pager-snap-clicked");
+		  },
+
+		  remove() {
+			if (this.networkedEl) {
+			  this.networkedEl.removeEventListener("pinned", this.update);
+			  this.networkedEl.removeEventListener("unpinned", this.update);
+			}
+
+			window.APP.hubChannel.removeEventListener("permissions_updated", this.update);
+		  }
+		});
+
+		
 		AFRAME.registerComponent("slidecounter", {
 		schema: {
 			index: { default: 0 },
@@ -15,7 +113,7 @@
 			this.setupSlides = this.setupSlides.bind(this);
 			this.cleanUpSlides = this.cleanUpSlides.bind(this);
 
-			this.el.object3D.addEventListener("interact", this.onNext);
+			//this.el.object3D.addEventListener("interact", this.onNext);
 			
 			//get our content from the variable in the script injected above.
 			this.content = slideconfig.slides;
@@ -40,6 +138,9 @@
 				console.log("update");
 				this.currentSlide = this.data.index;
 				console.log(this.currentSlide);
+				
+				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
+				this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 				
 				if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
 					if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
@@ -172,6 +273,11 @@
 		// set it to target the class freeze-unpriviliged-menu.
 		tempAtt.value = "index:0"
 		newEntity.setAttributeNode(tempAtt);
+		
+		tempAtt = document.createAttribute("slidemenu-pager")
+		// set it to target the class freeze-unpriviliged-menu.
+		tempAtt.value = "index:0"
+		newEntity.setAttributeNode(tempAtt);
 						
 	///////////////////////////////////////////////////////////////////////
 
@@ -259,7 +365,7 @@
 				property: "videoPaused"
 			},
 			{
-				component: "media-pager",
+				component: "slidemenu-pager",
 				property: "index"
 			}
 		]

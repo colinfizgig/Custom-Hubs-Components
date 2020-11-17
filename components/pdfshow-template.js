@@ -1,6 +1,8 @@
 		
 	function inject_pdfshow_template() {
-
+		
+		//Query assets in order to setup template
+		let assets = document.querySelector("a-assets");
 		// create a new template variable
 		let newTemplate = document.createElement("template");
 		// create template id

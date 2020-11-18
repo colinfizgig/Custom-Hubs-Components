@@ -400,8 +400,10 @@ inject_slideshow_Media();
 
 function addSlides(){
 	var el = document.createElement("a-entity")
+	el.setAttribute("id", "slideshow")
 	el.setAttribute("networked", { template: "#slideshow-media" } )
 	el.setAttribute("media-loader", {animate: false, fileIsOwned: true})
 	el.object3D.position.y = 2;
 	AFRAME.scenes[0].appendChild(el)
 }
+

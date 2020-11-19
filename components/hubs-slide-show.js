@@ -409,7 +409,7 @@ function addSlides(){
 
 var presenceTimeout;
 
-if(document.querySelector("[class*=presence-log-in-room]") != null) {
+if(document.querySelector("[class*=presence-log-in-room]") == null) {
 	console.log("the log does not exist yet");
 	presenceTimeout = setTimeout(function(){ 
 		if(document.querySelector("[class*=presence-log-in-room]") != null ) {

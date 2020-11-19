@@ -400,8 +400,52 @@ inject_slideshow_Media();
 
 function addSlides(){
 	var el = document.createElement("a-entity")
+	el.setAttribute("id", "slideshow")
 	el.setAttribute("networked", { template: "#slideshow-media" } )
 	el.setAttribute("media-loader", {animate: false, fileIsOwned: true})
 	el.object3D.position.y = 2;
 	AFRAME.scenes[0].appendChild(el)
 }
+
+var presenceIntervalCheck;
+
+if(document.querySelector("[class*=presence-log-in-room]") == null) {
+	console.log("the log does not exist yet");
+	presenceIntervalCheck = setInterval(function(){ 
+		if(document.querySelector("[class*=presence-log-in-room]") != null ) {
+			console.log("found presence");
+			checkPresence();
+		}else{
+			console.log("checking presence");
+		}
+	}, 2000);
+}else{
+	checkPresence();
+}
+
+function checkPresence() {
+	
+	const watchedNode = document.querySelector("[class^=presence-log]")
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+		  if (mutation.addedNodes) {
+			for (var n of mutation.addedNodes){
+						if(n.textContent == APP.store.state.profile.displayName+":addSlides"){
+							//check to see if there is a slideshow already.  if not add one
+							if(document.querySelector("a-entity[slidecounter]") == null){
+								addSlides();
+							}else{
+								console.log("a slideshow already exists");
+							}
+						}
+						console.log(APP.store.state.profile.displayName)
+			  console.log(n.textContent)
+			}
+		  }
+		})
+	})
+	observer.observe(watchedNode, {childList:true});
+	
+	clearInterval(presenceIntervalCheck);
+}
+

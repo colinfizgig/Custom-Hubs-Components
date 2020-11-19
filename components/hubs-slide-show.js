@@ -407,3 +407,42 @@ function addSlides(){
 	AFRAME.scenes[0].appendChild(el)
 }
 
+var presenceTimeout;
+
+if(document.querySelector("[class*=presence-log-in-room]") != null) {
+	console.log("the log does not exist yet");
+	presenceTimeout = setTimeout(function(){ 
+		if(document.querySelector("[class*=presence-log-in-room]") != null ) {
+			checkPresence();
+		}
+	}, 2000);
+}else{
+	checkPresence();
+}
+
+function checkPresence() {
+	
+	const watchedNode = document.querySelector("[class^=presence-log]")
+	var observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+		  if (mutation.addedNodes) {
+			for (var n of mutation.addedNodes){
+						if(n.textContent == APP.store.state.profile.displayName+":addSlides"){
+							//check to see if there is a slideshow already.  if not add one
+							if(document.querySelector("a-entity[slidecounter]") == null){
+								addSlides();
+							}else{
+								console.log("a slideshow already exists");
+							}
+						}
+						console.log(APP.store.state.profile.displayName)
+			  console.log(n.textContent)
+			}
+		  }
+		})
+	})
+	observer.observe(watchedNode, {childList:true});
+	
+	clearTimeout(presenceTimeout);
+}
+

@@ -407,11 +407,11 @@ function addSlides(){
 	AFRAME.scenes[0].appendChild(el)
 }
 
-var presenceTimeout;
+var presenceIntervalCheck;
 
 if(document.querySelector("[class*=presence-log-in-room]") == null) {
 	console.log("the log does not exist yet");
-	presenceTimeout = setTimeout(function(){ 
+	presenceIntervalCheck = setInterval(function(){ 
 		if(document.querySelector("[class*=presence-log-in-room]") != null ) {
 			console.log("found presence");
 			checkPresence();
@@ -446,6 +446,6 @@ function checkPresence() {
 	})
 	observer.observe(watchedNode, {childList:true});
 	
-	clearTimeout(presenceTimeout);
+	clearInterval(presenceIntervalCheck);
 }
 

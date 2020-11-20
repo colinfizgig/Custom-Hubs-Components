@@ -271,7 +271,7 @@ function checkPresence() {
 	clearInterval(presenceIntervalCheck);
 }
 
-document.querySelector("a-scene").addEventListener("chatevent", function(e) {
+document.querySelector("a-scene").addEventListener("chatevent", e => {
 	
 	console.log("e.detail.text = " + e.detail.text);
 	

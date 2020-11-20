@@ -272,10 +272,11 @@ function checkPresence() {
 }
 
 document.querySelector("a-scene").addEventListener("chatevent", e => {
+
+	var mySplit = e.detail.text.split(":");
+	console.log("e.detail.text = " + mySplit[1]);
 	
-	console.log("e.detail.text = " + e.detail.text);
-	
-	if(e.detail.text == APP.store.state.profile.displayName+":addSlides"){
+	if(mySplit[1] == "addSlides"){
 		addSlides();
 	}
 	

@@ -14,5 +14,6 @@ config.hubsarray = [
 	{hub_id: 'kBquF8A', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/presence-customcmd-setup.js'},
 	{hub_id: 'DVeQzPW', urls:'https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/interactable-ball.js,https://colinfizgig.github.io/Custom-Hubs-Components/components/presence-customcmd-setup.js'}
 	];
+	
 
 module.exports = config;

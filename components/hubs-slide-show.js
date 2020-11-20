@@ -257,7 +257,7 @@ function checkPresence() {
 		  if (mutation.addedNodes) {
 			for (var n of mutation.addedNodes){
 				
-				document.querySelector("a-scene").dispatchEvent(new CustomEvent("chatevent", { bubbles: true, detail: { text: () => n.textContent } }));
+				document.querySelector("a-scene").dispatchEvent(new CustomEvent("chatevent", { bubbles: true, detail: { text: n.textContent } }));
 				
 				console.log(APP.store.state.profile.displayName)
 				console.log(n.textContent)

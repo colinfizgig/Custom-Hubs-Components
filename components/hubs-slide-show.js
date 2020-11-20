@@ -276,9 +276,23 @@ document.querySelector("a-scene").addEventListener("chatevent", e => {
 	var mySplit = e.detail.text.split(":");
 	console.log("e.detail.text = " + mySplit[1]);
 	
+	/*
 	if(mySplit[1] == "addSlides"){
 		addSlides();
 	}
+	*/
 	
+	// function we want to run
+	var fnstring = mySplit[1];
+
+	// find object
+	var fn = window[fnstring];
+
+	// is object a function?
+	if (typeof fn === "function"){
+		fn();
+	}else{
+		console.log(fn + " is not a function");
+	}
 });
 

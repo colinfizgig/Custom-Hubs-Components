@@ -278,9 +278,7 @@ function run() {
 				component: "scale",
 				requiresNetworkUpdate: vectorRequiresUpdate(0.001)
 			},
-			"media-loader",
 			"material",
-			"camera-cube-env",
 			"pinnable"
 		]
 	});
@@ -290,7 +288,7 @@ function run() {
 // a function to create a new networked entity in the scene using the new template created above
 // this could be bound to a chat command if we wanted to do that similar to the /duck 
 // component chat command
-run();
+createInteractiveBall();
 
 function addBall(){
 	var el = document.createElement("a-entity")

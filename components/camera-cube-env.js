@@ -32,7 +32,8 @@ AFRAME.registerComponent('camera-cube-env', {
 		
 		this.cam.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
 		this.cam.renderTarget.texture.generateMipmaps = true;
-	    this.el.object3D.add( this.cam );
+		var myScene = document.querySelector('a-scene').object3D;
+	    myScene.add( this.cam );
 
 	    this.done = false;
 		
@@ -45,7 +46,6 @@ AFRAME.registerComponent('camera-cube-env', {
 			obj.traverse(node => {
 				var myCam = this.cam;
 				var myEl = this.el;
-				var myScene = document.querySelector('a-scene').object3D;
 				var myMesh = this.el.getObject3D('mesh');
 				myMesh.visible = false;
 

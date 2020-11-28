@@ -127,6 +127,7 @@ function createInteractiveBall() {
 				component: "scale",
 				requiresNetworkUpdate: vectorRequiresUpdate(0.001)
 			},
+			"media-loader",
 			"material",
 			"pinnable"
 		]

@@ -70,39 +70,6 @@ AFRAME.registerComponent('camera-cube-env', {
 					});
 				})
 				.catch(() => {}); //ignore exception, entity might not be networked
-		/*
-		//this method does target for skinned meshes and unskinned
-		this.el.addEventListener('model-loaded', () => {
-
-			// Grab the mesh / scene.
-			const obj = this.el.getObject3D('mesh');
-			// Go over the submeshes and modify materials we want.
-			
-			obj.traverse(node => {
-				var myCam = this.cam;
-				var myEl = this.el;
-				var myScene = document.querySelector('a-scene').object3D;
-				var myMesh = this.el.getObject3D('mesh');
-				myMesh.visible = false;
-
-				AFRAME.scenes[0].renderer.autoClear = true;
-				var camVector = new THREE.Vector3();
-				myEl.object3D.getWorldPosition(camVector);
-				myCam.position.copy(myEl.object3D.worldToLocal(camVector));
-				myCam.update( AFRAME.scenes[0].renderer, myEl.sceneEl.object3D );
-
-				if (node.type.indexOf('Mesh') !== -1) {
-					if(this.data.matoverride == true){
-						node.material.metalness = this.data.metalness;
-						node.material.roughness = this.data.roughness;
-					}
-					node.material.envMap = myCam.renderTarget.texture;
-					node.material.needsUpdate = true;
-				}
-				myMesh.visible = true;
-			});
-		});
-		*/
 	  },
 	  
 	  tick: function(t,dt){
@@ -154,7 +121,14 @@ AFRAME.registerComponent('camera-cube-env', {
 	   * Called when a component is removed (e.g., via removeAttribute).
 	   * Generally undoes all modifications to the entity.
 	   */
-	  remove: function () {},
+	  remove() {
+				if (this.networkedEl) {
+					this.networkedEl.removeEventListener("pinned", this.update);
+					this.networkedEl.removeEventListener("unpinned", this.update);
+				}
+
+				window.APP.hubChannel.removeEventListener("permissions_updated", this.update);
+		},
 
 	  /**
 	   * Called on each scene tick.

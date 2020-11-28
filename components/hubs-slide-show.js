@@ -191,25 +191,6 @@
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false})
 			},
 
-			cleanUpSlides(){
-				this.loaded.map( s => { s.setAttribute("pinnable", {pinned:false}); s.remove()} )
-				this.loaded = []
-			},
-
-			removeAllMedia(){
-				for (var el of document.querySelectorAll("[media-loader]")){
-					var match = el.components["media-loader"].attrValue.src.match('fabien.benetou.fr')
-					if (match && match.length>0){
-						NAF.utils.getNetworkedEntity(el).then(networkedEl => {
-							const mine = NAF.utils.isMine(networkedEl)
-							if (!mine) var owned = NAF.utils.takeOwnership(networkedEl)
-							networkedEl.components["set-unowned-body-kinematic"].setBodyKinematic()
-							networkedEl.setAttribute("pinnable", {pinned:false})
-							networkedEl.remove()
-						})
-					}
-				}
-			}
 		});
 }
 

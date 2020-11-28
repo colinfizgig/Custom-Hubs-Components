@@ -26,7 +26,7 @@ AFRAME.registerComponent('camera-cube-env', {
 	  init: function(){
 	    this.counter = this.data.interval;
 		
-		this.cam = new THREE.CubeCamera( 1.0, this.data.distance, this.data.resolution);
+		this.cam = new THREE.CubeCamera( 0.2, this.data.distance, this.data.resolution);
 		
 		this.cam.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
 		this.cam.renderTarget.texture.generateMipmaps = true;

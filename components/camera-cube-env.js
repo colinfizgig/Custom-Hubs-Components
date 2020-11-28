@@ -33,7 +33,10 @@ AFRAME.registerComponent('camera-cube-env', {
 		this.cam.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
 		this.cam.renderTarget.texture.generateMipmaps = true;
 		var myScene = document.querySelector('a-scene').object3D;
-	    myScene.add( this.cam );
+		this.myCamEntity = document.createElement('a-entity');
+		this.myCamEntity.class = "cubeCam";
+	    this.myCamEntity.add( this.cam );
+		myScene.add(this.myCamEntity);
 
 	    this.done = false;
 		
@@ -52,7 +55,7 @@ AFRAME.registerComponent('camera-cube-env', {
 				AFRAME.scenes[0].renderer.autoClear = true;
 				var camVector = new THREE.Vector3();
 				myEl.object3D.getWorldPosition(camVector);
-				myCam.position.copy(myEl.object3D.worldToLocal(camVector));
+				this.myCamEntity.el.object3D.position.copy(myEl.object3D.worldToLocal(camVector));
 				myCam.update( AFRAME.scenes[0].renderer, myEl.sceneEl.object3D );
 
 				if (node.type.indexOf('Mesh') !== -1) {
@@ -90,7 +93,7 @@ AFRAME.registerComponent('camera-cube-env', {
 	        AFRAME.scenes[0].renderer.autoClear = true;
 			var camVector = new THREE.Vector3();
 			myEl.object3D.getWorldPosition(camVector);
-	        myCam.position.copy(myEl.object3D.worldToLocal(camVector));
+	        this.myCamEntity.el.object3D.position.copy(myEl.object3D.worldToLocal(camVector));
 	        myCam.update( AFRAME.scenes[0].renderer, myEl.sceneEl.object3D );
 			if(myMesh){
 				myMesh.traverse( function( child ) { 

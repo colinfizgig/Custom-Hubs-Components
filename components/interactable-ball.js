@@ -40,7 +40,7 @@ function createInteractiveBall() {
 	// reuse the same bh variable for a material attribute to color the geometry
 	bh = document.createAttribute("material");
 	// set the color to yellow.  You can set a lot of things here, texture, shininess etc.  See the aframe docs on materials
-	bh.value = "color:yellow;metalness:1.0;roughness:0.2;";
+	bh.value = "color:yellow;metalness:1.0;roughness:0.0;";
 	newEntity.setAttributeNode(bh);
 				
 	// set the unowned body kinematic component for the object since it's networked

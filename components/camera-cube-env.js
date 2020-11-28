@@ -24,6 +24,8 @@ AFRAME.registerComponent('camera-cube-env', {
 	   * Called once when component is attached. Generally for initial setup.
 	   */
 	  init: function(){
+		
+		this.myRedraw = this.myRedraw.bind(this);
 	    this.counter = this.data.interval;
 		
 		this.cam = new THREE.CubeCamera( 1.0, this.data.distance, this.data.resolution);
@@ -34,6 +36,41 @@ AFRAME.registerComponent('camera-cube-env', {
 
 	    this.done = false;
 		
+		NAF.utils
+				.getNetworkedEntity(this.el)
+				.then(networkedEl => {
+					this.networkedEl = networkedEl;
+					this.networkedEl.addEventListener("pinned", this.update);
+					this.networkedEl.addEventListener("unpinned", this.update);
+					window.APP.hubChannel.addEventListener("permissions_updated", this.update);
+					
+					const obj = this.networkedEl.getObject3D('mesh');
+					
+					obj.traverse(node => {
+						var myCam = this.cam;
+						var myEl = this.networkedEl;
+
+						obj.visible = false;
+
+						AFRAME.scenes[0].renderer.autoClear = true;
+						var camVector = new THREE.Vector3();
+						myEl.object3D.getWorldPosition(camVector);
+						myCam.position.copy(myEl.object3D.worldToLocal(camVector));
+						myCam.update( AFRAME.scenes[0].renderer, myEl.sceneEl.object3D );
+
+						if (node.type.indexOf('Mesh') !== -1) {
+							if(this.data.matoverride == true){
+								node.material.metalness = this.data.metalness;
+								node.material.roughness = this.data.roughness;
+							}
+							node.material.envMap = myCam.renderTarget.texture;
+							node.material.needsUpdate = true;
+						}
+						obj.visible = true;
+					});
+				})
+				.catch(() => {}); //ignore exception, entity might not be networked
+		/*
 		//this method does target for skinned meshes and unskinned
 		this.el.addEventListener('model-loaded', () => {
 
@@ -65,6 +102,7 @@ AFRAME.registerComponent('camera-cube-env', {
 				myMesh.visible = true;
 			});
 		});
+		*/
 	  },
 	  
 	  tick: function(t,dt){
@@ -73,7 +111,7 @@ AFRAME.registerComponent('camera-cube-env', {
 			  if( this.counter > 0){
 				this.counter-=dt;
 			  }else{
-				myRedraw(this.cam, this.el, this.el.getObject3D('mesh'));
+				this.myRedraw(this.cam, this.networkedEl, this.networkedEl.getObject3D('mesh'));
 				if(!this.data.repeat){
 					this.done = true;
 					this.counter = this.data.interval;
@@ -81,8 +119,9 @@ AFRAME.registerComponent('camera-cube-env', {
 			  }
 			}
 
-		
-		function myRedraw(myCam, myEl, myMesh){
+	  },
+	  
+	  myRedraw(myCam, myEl, myMesh){
 			myMesh.visible = false;
 
 	        AFRAME.scenes[0].renderer.autoClear = true;
@@ -99,8 +138,6 @@ AFRAME.registerComponent('camera-cube-env', {
 				});
 			}
 			myMesh.visible = true;
-		}
-
 	  },
 
 	  /**
@@ -108,26 +145,9 @@ AFRAME.registerComponent('camera-cube-env', {
 	   * Generally modifies the entity based on the data.
 	   */
 	  update: function (oldData) {
-		 
-		myUpdate(this.cam, this.el, this.el.getObject3D('mesh'));
-		function myUpdate(myCam, myEl, myMesh){
-			myMesh.visible = false;
-
-	        AFRAME.scenes[0].renderer.autoClear = true;
-	        var camVector = new THREE.Vector3();
-			myEl.object3D.getWorldPosition(camVector);
-	        myCam.position.copy(myEl.object3D.worldToLocal(camVector));
-	        myCam.update( AFRAME.scenes[0].renderer, myEl.sceneEl.object3D );
-			if(myMesh){
-				myMesh.traverse( function( child ) { 
-					if ( child instanceof THREE.Mesh ) {
-						child.material.envMap = myCam.renderTarget.texture;
-						child.material.needsUpdate = true;
-					}
-				});
-			}
-			myMesh.visible = true;
-		}
+		 if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
+			this.myRedraw(this.cam, this.networkedEl, this.networkedEl.getObject3D('mesh'));
+		 }
 	  },
 
 	  /**

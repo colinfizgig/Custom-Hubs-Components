@@ -141,22 +141,16 @@ function createInteractiveBall() {
 createInteractiveBall();
 
 function addBall(){
-	var myInterval;
 	
 	if(document.querySelector("a-entity[camera-cube-env]") == null){
-		myInterval = setInterval( function() { 
-			var el = document.createElement("a-entity")
-			el.setAttribute("networked", { template: "#interactable-ball-media" } )
-			el.object3D.position.y = 2;
-			AFRAME.scenes[0].appendChild(el)
-			stopAdding();
-		}, 2000);
+
+		var el = document.createElement("a-entity")
+		el.setAttribute("networked", { template: "#interactable-ball-media" } )
+		el.object3D.position.y = 2;
+		AFRAME.scenes[0].appendChild(el)
 		
 	}else{
 		console.log("a ball already exists");
 	}
 	
-	function stopAdding () {
-		clearInterval(myInterval);
-	}
 }

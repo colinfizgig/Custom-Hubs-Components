@@ -36,7 +36,7 @@ AFRAME.registerComponent('camera-cube-env', {
 		this.myCamEntity = document.createElement('a-entity');
 		this.myCamEntity.class = "cubeCam";
 	    this.myCamEntity.object3D.add( this.cam );
-		myScene.appendChild(this.myCamEntity);
+		myScene.add(this.myCamEntity);
 
 	    this.done = false;
 		

@@ -36,7 +36,7 @@ AFRAME.registerComponent('camera-cube-env', {
 
 	    this.done = false;
 		
-		this.el.addEventListener('model-loaded', () => {
+		document.querySelector('a-scene').addEventListener('loaded', () => {
 
 			// Grab the mesh / scene.
 			const obj = this.el.getObject3D('mesh');

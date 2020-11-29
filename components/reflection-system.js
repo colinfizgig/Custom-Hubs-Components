@@ -1,13 +1,13 @@
-AFRAME.registerSystem('reflect-component', {
+AFRAME.registerSystem("reflect-component", {
 	
 	schema: {
-		resolution: { type:'number', default: 512},
-		interval: { type:'number', default: 1000},
-		distance: {type:'number', default: 10000},
-		repeat: {type:'boolean', default: true}
+		resolution: { type:"number", default: 512},
+		interval: { type:"number", default: 1000},
+		distance: {type:"number", default: 10000},
+		repeat: {type:"boolean", default: true}
 	},
 	
-	init: function () {
+	init: function() {
 		this.renderRedraw = this.renderRedraw.bind(this);
 		this.entities = [];
 		this.counter = this.data.interval;
@@ -38,11 +38,11 @@ AFRAME.registerSystem('reflect-component', {
 		}
 	},
 
-	registerMe: function (el) {
+	register: function (el) {
 		this.entities.push(el);
 	},
 
-	unregisterMe: function (el) {
+	unregister: function (el) {
 		var index = this.entities.indexOf(el);
 		this.entities.splice(index, 1);
 	},
@@ -78,7 +78,7 @@ AFRAME.registerSystem('reflect-component', {
 });
  
 	  
-AFRAME.registerComponent('reflect-component', {
+AFRAME.registerComponent("reflect-component", {
 
 	/**
 	* Set if component needs multiple instancing.
@@ -91,7 +91,7 @@ AFRAME.registerComponent('reflect-component', {
 	init: function(){
 		console.log(this.el);
 		console.log(this.system);
-		this.system.registerMe(this.el);
+		this.system.register(this.el);
 
 	    this.done = false;
 		
@@ -116,7 +116,7 @@ AFRAME.registerComponent('reflect-component', {
 	   * Generally undoes all modifications to the entity.
 	   */
 	remove: function () {
-		this.system.unregisterMe(this.el);
+		this.system.unregister(this.el);
 	},
 	  /**
 	   * Called on each scene tick.

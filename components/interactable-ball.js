@@ -80,7 +80,7 @@ function createInteractiveBall() {
 	newEntity.setAttribute("listed-media", "");
 	
 	//add the camera-cube-env component
-	newEntity.setAttribute("camera-cube-env", "");
+	newEntity.setAttribute("reflect-component", "");
 				
 	//Once all the attributes are setup on the entity you can append it to the template variable content created above.
 	newTemplate.content.appendChild(newEntity);
@@ -142,7 +142,7 @@ createInteractiveBall();
 
 function addBall(){
 	
-	if(document.querySelector("a-entity[camera-cube-env]") == null){
+	if(document.querySelector("a-entity[reflect-component]") == null){
 
 		var el = document.createElement("a-entity")
 		el.setAttribute("networked", { template: "#interactable-ball-media" } )

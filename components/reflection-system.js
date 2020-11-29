@@ -16,7 +16,7 @@ AFRAME.registerSystem("reflectcomponent", {
 		
 		this.cam.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
 		this.cam.renderTarget.texture.generateMipmaps = true;
-	    AFRAME.scenes[0].object3D.add( this.cam );
+	    AFRAME.scenes[0].add( this.cam );
 
 	    this.done = false;
 	},
@@ -48,7 +48,6 @@ AFRAME.registerSystem("reflectcomponent", {
 	},
 	
 	renderRedraw: function(myEl) {
-
 		let obj = myEl.getObject3D('mesh');
 		// Go over the submeshes and modify materials we want.
 			

@@ -1,9 +1,7 @@
 AFRAME.registerSystem("reflectcomponent", {
 	
 	schema: {
-		resolution: { type:"number", default: 512},
 		interval: { type:"number", default: 1000},
-		distance: {type:"number", default: 10000},
 		repeat: {type:"boolean", default: true}
 	},
 	
@@ -11,12 +9,6 @@ AFRAME.registerSystem("reflectcomponent", {
 		//this.renderRedraw = this.renderRedraw.bind(this);
 		this.entities = [];
 		this.counter = this.data.interval;
-		
-		this.cam = new THREE.CubeCamera( 0.2, this.data.distance, this.data.resolution);
-		
-		this.cam.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
-		this.cam.renderTarget.texture.generateMipmaps = true;
-	    AFRAME.scenes[0].add( this.cam );
 
 	    this.done = false;
 	},
@@ -47,7 +39,7 @@ AFRAME.registerSystem("reflectcomponent", {
 		this.entities.splice(index, 1);
 	},
 	
-	renderRedraw: function(myEl) {
+	renderRedraw: function(myEl, myCam) {
 		let obj = myEl.getObject3D('mesh');
 		// Go over the submeshes and modify materials we want.
 			
@@ -59,15 +51,15 @@ AFRAME.registerSystem("reflectcomponent", {
 			AFRAME.scenes[0].renderer.autoClear = true;
 			var camVector = new THREE.Vector3();
 			myEl.object3D.getWorldPosition(camVector);
-			this.cam.position.copy(myEl.object3D.worldToLocal(camVector));
-			this.cam.update( AFRAME.scenes[0].renderer, myEl.sceneEl.object3D );
+			myCam.position.copy(myEl.object3D.worldToLocal(camVector));
+			myCam.update( AFRAME.scenes[0].renderer, myEl.sceneEl.object3D );
 
 			if (node.type.indexOf('Mesh') !== -1) {
 				if(this.data.matoverride == true){
 					node.material.metalness = this.data.metalness;
 					node.material.roughness = this.data.roughness;
 				}
-				node.material.envMap = this.cam.renderTarget.texture;
+				node.material.envMap = myCam.renderTarget.texture;
 				node.material.needsUpdate = true;
 			}
 			obj.visible = true;
@@ -78,6 +70,11 @@ AFRAME.registerSystem("reflectcomponent", {
  
 	  
 AFRAME.registerComponent("reflectcomponent", {
+	
+	schema: {
+		resolution: { type:"number", default: 512},
+		distance: {type:"number", default: 10000}
+	},
 
 	/**
 	* Set if component needs multiple instancing.
@@ -89,13 +86,19 @@ AFRAME.registerComponent("reflectcomponent", {
 	*/
 	init: function(){
 		
+		this.cam = new THREE.CubeCamera( 0.2, this.data.distance, this.data.resolution);
+		
+		this.cam.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
+		this.cam.renderTarget.texture.generateMipmaps = true;
+	    this.el.object3D.add( this.cam );
+		
 		this.system.register(this.el);
 
 	    this.done = false;
 		
 		//this method does target for skinned meshes and unskinned
 		this.el.addEventListener('model-loaded', () => {
-			this.system.renderRedraw(this.el);
+			this.system.renderRedraw(this.el, this.cam);
 		});
 	},
 	  
@@ -106,7 +109,7 @@ AFRAME.registerComponent("reflectcomponent", {
 	   * Generally modifies the entity based on the data.
 	   */
 	update: function (oldData) {
-		this.system.renderRedraw(this.el);
+		this.system.renderRedraw(this.el, this.cam);
 	},
 
 	  /**

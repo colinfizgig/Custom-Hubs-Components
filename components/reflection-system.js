@@ -79,7 +79,6 @@ AFRAME.registerSystem('reflect-component', {
  
 	  
 AFRAME.registerComponent('reflect-component', {
-  schema: { },
 
 	/**
 	* Set if component needs multiple instancing.
@@ -90,6 +89,8 @@ AFRAME.registerComponent('reflect-component', {
 	* Called once when component is attached. Generally for initial setup.
 	*/
 	init: function(){
+		console.log(this.el);
+		console.log(this.system);
 		this.system.registerMe(this.el);
 
 	    this.done = false;
@@ -126,11 +127,11 @@ AFRAME.registerComponent('reflect-component', {
 	   * Called when entity pauses.
 	   * Use to stop or remove any dynamic or background behavior such as events.
 	   */
-	  pause: function () { },
+	pause: function () { },
 
 	  /**
 	   * Called when entity resumes.
 	   * Use to continue or add any dynamic or background behavior such as events.
 	   */
-	  play: function () { }
-	});
+	play: function () { }
+});

@@ -8,7 +8,7 @@ AFRAME.registerSystem("reflectcomponent", {
 	},
 	
 	init: function() {
-		this.renderRedraw = this.renderRedraw.bind(this);
+		//this.renderRedraw = this.renderRedraw.bind(this);
 		this.entities = [];
 		this.counter = this.data.interval;
 		
@@ -28,7 +28,7 @@ AFRAME.registerSystem("reflectcomponent", {
 				this.counter-=dt;
 			}else{
 				for(var i = 0; i<this.entities.length; i++){
-					this.renderRedraw(this.entities[i]);
+					//this.renderRedraw(this.entities[i]);
 				}
 				if(!this.data.repeat){
 					this.done = true;
@@ -89,8 +89,7 @@ AFRAME.registerComponent("reflectcomponent", {
 	* Called once when component is attached. Generally for initial setup.
 	*/
 	init: function(){
-		console.log(this.el);
-		console.log(this.system);
+		
 		this.system.register(this.el);
 
 	    this.done = false;

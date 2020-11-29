@@ -1,4 +1,4 @@
-AFRAME.registerSystem("reflect-component", {
+AFRAME.registerSystem("reflectcomponent", {
 	
 	schema: {
 		resolution: { type:"number", default: 512},
@@ -78,7 +78,7 @@ AFRAME.registerSystem("reflect-component", {
 });
  
 	  
-AFRAME.registerComponent("reflect-component", {
+AFRAME.registerComponent("reflectcomponent", {
 
 	/**
 	* Set if component needs multiple instancing.

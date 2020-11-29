@@ -20,7 +20,7 @@ AFRAME.registerSystem("reflectcomponent", {
 				this.counter-=dt;
 			}else{
 				for(var i = 0; i<this.entities.length; i++){
-					//this.renderRedraw(this.entities[i]);
+					renderRedraw(this.entities[i]);
 				}
 				if(!this.data.repeat){
 					this.done = true;
@@ -45,8 +45,8 @@ AFRAME.registerSystem("reflectcomponent", {
 			
 		obj.traverse(node => {
 
-			//var myMesh = myEl.getObject3D('mesh');
-			obj.visible = false;
+			var myMesh = myEl.getObject3D('mesh');
+			myMesh.visible = false;
 
 			AFRAME.scenes[0].renderer.autoClear = true;
 			var camVector = new THREE.Vector3();
@@ -62,7 +62,7 @@ AFRAME.registerSystem("reflectcomponent", {
 				node.material.envMap = myCam.renderTarget.texture;
 				node.material.needsUpdate = true;
 			}
-			obj.visible = true;
+			myMesh.visible = true;
 		});
 	}
 	

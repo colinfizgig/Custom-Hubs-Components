@@ -32,7 +32,7 @@ AFRAME.registerComponent('camera-cube-env', {
 	    this.el.object3D.add( this.cam );
 		
 		//this method does target for skinned meshes and unskinned
-		this.loaded = this.el.sceneEl.addEventListener('loaded', () => {
+		this.loaded = this.el.sceneEl.addEventListener('model-loaded', () => {
 			
 			// Grab the mesh / scene.
 			const obj = this.el.getObject3D('mesh');

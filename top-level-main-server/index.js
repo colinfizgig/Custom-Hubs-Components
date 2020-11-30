@@ -51,9 +51,9 @@ app.get(
 	});
 
 /////////
-const privKeyFileName = "/etc/letsencrypt/live/aelatgt.net/privkey.pem";
-const certFileName = "/etc/letsencrypt/live/aelatgt.net/cert.pem";
-const chainFileName = "/etc/letsencrypt/live/aelatgt.net/chain.pem";
+const privKeyFileName = "";
+const certFileName = "";
+const chainFileName = "";
 
 // this will either be an http or https server
 var httpServer;

@@ -1,5 +1,5 @@
 
-function createInteractiveBall() {
+function inject_createInteractiveBall() {
 				
 	//Query assets in order to setup template
 	let assets = document.querySelector("a-assets");
@@ -135,12 +135,11 @@ function createInteractiveBall() {
 		
 }
 
-// a function to create a new networked entity in the scene using the new template created above
-// this could be bound to a chat command if we wanted to do that similar to the /duck 
-// component chat command
-createInteractiveBall();
+// we add the prefix inject_ to our utility functions to isolate them from the global namespace
+inject_createInteractiveBall();
 
-function addBall(){
+// we add the prefix mod_ to this function to allow it to be targeted by the chat interface
+function mod_addBall(){
 	
 	if(document.querySelector("a-entity[camera-cube-env]") == null){
 

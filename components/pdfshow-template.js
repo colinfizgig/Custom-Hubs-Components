@@ -161,4 +161,5 @@
 
 }
 
+// we add the prefix inject_ to our utility functions to isolate them from the global namespace
 inject_pdfshow_template();

@@ -191,9 +191,11 @@
 		});
 }
 
+// we add the prefix inject_ to our utility functions to isolate them from the global namespace
 inject_slideshow_Media();
 
-function addSlides(){
+// we add the prefix mod_ to this function to allow it to be targeted by the chat interface
+function mod_addSlides(){
 	//only perform this once if the slideshow does not exist already.
 	if(document.querySelector("a-entity[slidecounter]") == null){
 		var el = document.createElement("a-entity")
@@ -206,7 +208,3 @@ function addSlides(){
 		console.log("a slideshow already exists");
 	}
 }
-
-// in order to bind this command to chat you can inject the presence-customcmd-setup script
-// this will inject the addSlides command into the presence logger.
-

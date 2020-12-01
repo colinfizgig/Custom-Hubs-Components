@@ -47,8 +47,11 @@ document.querySelector("a-scene").addEventListener("chatevent", e => {
 	console.log("e.detail.text = " + mySplit[1]);
 	
 	
-	// function we want to run
-	var fnstring = mySplit[1];
+	// function we want to run we add mod_ to the string to isolate our custom functions
+	// from the global namespace and prevent people from running functions through chat
+	// interface unless it's one we've added for that purpose.
+	
+	var fnstring = "mod_" + mySplit[1];
 
 	// find object
 	var fn = window[fnstring];

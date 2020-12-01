@@ -117,11 +117,9 @@
 
 		init() {
 
-			this.onNext = this.onNext.bind(this);
+			//this.onNext = this.onNext.bind(this);
 			this.update = this.update.bind(this);
-			this.removeAllMedia = this.removeAllMedia.bind(this);
 			this.setupSlides = this.setupSlides.bind(this);
-			this.cleanUpSlides = this.cleanUpSlides.bind(this);
 
 			//if you want to disable the menu and make the slide clickable and loopable
 			//then uncomment the line below and remove the slidemenu-pager component from the object
@@ -159,24 +157,6 @@
 				}
 			},
 
-			onNext() {
-						
-				if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)){ 
-					return;
-				}
-			// currently the index is not updating over NAF even though it should be networked.
-				if(this.currentSlide < (this.max -1)){
-					this.currentSlide += 1;
-					this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-					this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
-
-				}else{
-					this.currentSlide = 0;
-					this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-					this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
-				}	
-			},
-
 			remove() {
 				if (this.networkedEl) {
 					this.networkedEl.removeEventListener("pinned", this.update);
@@ -189,33 +169,15 @@
 			setupSlides(){
 				this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false})
-			},
-
-			cleanUpSlides(){
-				this.loaded.map( s => { s.setAttribute("pinnable", {pinned:false}); s.remove()} )
-				this.loaded = []
-			},
-
-			removeAllMedia(){
-				for (var el of document.querySelectorAll("[media-loader]")){
-					var match = el.components["media-loader"].attrValue.src.match('fabien.benetou.fr')
-					if (match && match.length>0){
-						NAF.utils.getNetworkedEntity(el).then(networkedEl => {
-							const mine = NAF.utils.isMine(networkedEl)
-							if (!mine) var owned = NAF.utils.takeOwnership(networkedEl)
-							networkedEl.components["set-unowned-body-kinematic"].setBodyKinematic()
-							networkedEl.setAttribute("pinnable", {pinned:false})
-							networkedEl.remove()
-						})
-					}
-				}
 			}
 		});
 }
 
+// we add the prefix inject_ to our utility functions to isolate them from the global namespace
 inject_slideshow_Media();
 
-function addSlides(){
+// we add the prefix mod_ to this function to allow it to be targeted by the chat interface
+function mod_addSlides(){
 	//only perform this once if the slideshow does not exist already.
 	if(document.querySelector("a-entity[slidecounter]") == null){
 		var el = document.createElement("a-entity")
@@ -228,7 +190,3 @@ function addSlides(){
 		console.log("a slideshow already exists");
 	}
 }
-
-// in order to bind this command to chat you can inject the presence-customcmd-setup script
-// this will inject the addSlides command into the presence logger.
-

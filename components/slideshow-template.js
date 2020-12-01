@@ -77,7 +77,7 @@
 	///////////////////////////////////////////////////////////////////////
 
 		//add our slide-counter component created below.  I include the setting of index to show how it keeps track of the current slide
-		tempAtt = document.createAttribute("slidecounter")
+		tempAtt = document.createAttribute("slide-element")
 		// set it to target the class freeze-unpriviliged-menu.
 		tempAtt.value = "index:0"
 		newEntity.setAttributeNode(tempAtt);
@@ -163,7 +163,7 @@
 				property: "index"
 			},
 			{
-				component: "slidecounter",
+				component: "slide-element",
 				property: "index"
 			},
 			{

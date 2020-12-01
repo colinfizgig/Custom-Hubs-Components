@@ -156,25 +156,7 @@
 					}
 				}
 			},
-/*
-			onNext() {
-						
-				if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)){ 
-					return;
-				}
-			// currently the index is not updating over NAF even though it should be networked.
-				if(this.currentSlide < (this.max -1)){
-					this.currentSlide += 1;
-					this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-					this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 
-				}else{
-					this.currentSlide = 0;
-					this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false});
-					this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
-				}	
-			},
-*/
 			remove() {
 				if (this.networkedEl) {
 					this.networkedEl.removeEventListener("pinned", this.update);

@@ -175,10 +175,6 @@
 		nonAuthorizedComponents: [
 			{
 				component: "media-video",
-				property: "time"
-			},
-			{
-				component: "media-video",
 				property: "videoPaused"
 			}
 		]

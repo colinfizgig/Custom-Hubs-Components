@@ -117,7 +117,7 @@
 
 		init() {
 
-			this.onNext = this.onNext.bind(this);
+			//this.onNext = this.onNext.bind(this);
 			this.update = this.update.bind(this);
 			this.setupSlides = this.setupSlides.bind(this);
 
@@ -156,7 +156,7 @@
 					}
 				}
 			},
-
+/*
 			onNext() {
 						
 				if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)){ 
@@ -174,7 +174,7 @@
 					this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
 				}	
 			},
-
+*/
 			remove() {
 				if (this.networkedEl) {
 					this.networkedEl.removeEventListener("pinned", this.update);

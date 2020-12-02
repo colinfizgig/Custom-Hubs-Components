@@ -18,6 +18,6 @@ Once you have scripts to inject into the client you need someplace to host them 
 
 The advantages of hosting and storing your custom code this way are too numerous to mention.  The largest advantage though is that you won’t have to constantly update your top-level-server on your cloud setup.  In addition you can opensource your components and benefit from other developer’s help in keeping them maintained. 
 
-|                                                              |                                    |
-| :----------------------------------------------------------- | ---------------------------------: |
-| [Cannibalizing Components from Hubs](Cannibalizing Components from Hubs.md) | [Index](Customizing hubs Title.md) |
+|                                                              |                                                              |
+| :----------------------------------------------------------- | -----------------------------------------------------------: |
+| [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Cannibalizing Components from Hubs.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Customizing hubs Title.md) |

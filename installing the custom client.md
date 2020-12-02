@@ -16,6 +16,6 @@ If you checked out the getting started link I posted above you may have noticed 
 
 Once you have Hubs forked and Node.js and NPM installed you can run the client install in a system console to install all of the Hubs dependencies.  The instructions for this can be found here [run-your-custom-client](https://hubs.mozilla.com/docs/hubs-cloud-custom-clients.html#run-your-custom-client).  Pay close attention to the directions.  You will want to run **npm ci** instead of **npm install** in order to make sure the dependencies installed are from the **package-lock.json**.  Then assuming you have your own Mozilla Hubs account or an admin account on your own Hubs cloud installation you can run **npm login** and get credentials installed to start running the client locally. 
 
-|                                    |                                    |                                                       |
-| :--------------------------------- | :--------------------------------: | ----------------------------------------------------: |
-| [Introduction.md](Introduction.md) | [Index](Customizing hubs Title.md) | [Some things to Consider](Some things to Consider.md) |
+|                                                              |                                                              |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
+| [Introduction.md](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Introduction.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Customizing hubs Title.md) | [Some things to Consider](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Some things to Consider.md) |

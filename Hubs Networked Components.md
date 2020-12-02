@@ -87,7 +87,7 @@ async update(oldData) {
 
 All this function does is get the current index number and set the media-loader content to that index.  Then it updates its own index to keep track of the current slide number.   You may notice at this point that there is not a function on this component which actually increases or decreases the index value.  Which means it can’t change slides at this point. We could attach a function called onNext which would wait for interaction/click on the slide and increment the index in one direction, but it’s better to add an interface to the slideshow which can go forward and backward in the slides.  To do this we add another [**“slidemenu-pager” component**](https://github.com/colinfizgig/Custom-Hubs-Components/blob/main/components/hubs-slide-show.js) which attaches to the slideshow and is controlled by a menu attached to the slideshow.
 
-|                                                         |                                    |                                                              |
-| :------------------------------------------------------ | :--------------------------------: | -----------------------------------------------------------: |
-| [Creating Hubs Components](Creating Hubs Components.md) | [Index](Customizing hubs Title.md) | [Cannibalizing Components from Hubs](Cannibalizing Components from Hubs.md) |
+|                                                              |                                                              |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
+| [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Creating Hubs Components.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Customizing hubs Title.md) | [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Cannibalizing Components from Hubs.md) |
 

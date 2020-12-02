@@ -42,6 +42,6 @@ With that modification when another user enters the hub after the ball is create
 
 This gets a-frame rendering synced up between clients , but what about components that need to have interaction synced up.  That requires networking the component using networked a-frame (NAF) and may require a custom template to be added to the **NAF.schemas** object.  To illustrate the details we will create a slideshow component which can be advanced or rewound by any user.
 
-|                                        |                                    |                                                           |
-| :------------------------------------- | :--------------------------------: | --------------------------------------------------------: |
-| [Hijacking Hubs.js](Hijacking Hubs.md) | [Index](Customizing hubs Title.md) | [Hubs Networked Components](Hubs Networked Components.md) |
+|                                                              |                                                              |                                                              |
+| :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
+| [Hijacking Hubs.js](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Hijacking Hubs.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Customizing hubs Title.md) | [Hubs Networked Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Hubs Networked Components.md) |

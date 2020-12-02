@@ -1,0 +1,21 @@
+#### **Installing a Custom Client for Hubs**
+
+##### Documentation for Hubs-Cloud
+
+If you checked out the getting started link I posted above you may have noticed Mozilla gives you information on setting up a custom client at [Hubs-cloud-custom-clients](https://hubs.mozilla.com/docs/hubs-cloud-custom-clients.html) .  The information here is good and should get you going on setting up a custom client.  You may be asking what is a ‘Hubs custom client’ and why do I need one?  Good question! The answer is that the ‘custom client’ is the web-page you will be directed to when you login into a Mozilla Hubs Cloud Installation.  Installing Hubs Cloud is beyond the scope of this article but there is documentation on that as well at [Mozilla Hubs Cloud docs](https://hubs.mozilla.com/docs/hubs-cloud-intro.html).  Suffice it to say that the Hubs Cloud is the “Server” you will need to run your own version of Hubs.  It is the “Backend” services that will serve the web pages you see when you open a ‘hub’ aka the ‘Client’.  The ‘Client’ is the page served on your machine hosted from the ‘Hubs Cloud’.  In order to customize the things that Hubs can do with A-frame or Three.js code you need to modify the source code for the client.  As mentioned in the first link in this section you can find the client source code on Github in the https://github.com/mozilla/hubs repo.  You’ll need to fork that to your own Github account so you can make modifications to the client and still merge with changes from the official Mozilla Hubs branch when they update it.  Follow the instructions on the [setup-your-fork-of-the-hubs-repo](https://hubs.mozilla.com/docs/hubs-cloud-custom-clients.html#setup-your-fork-of-the-hubs-repo) page. 
+
+
+
+![img](https://lh6.googleusercontent.com/7UVDxTDuGdr2RW7FcQZFj7O9PuchHZDFu5MHL41DmiQOWZc6OohDr-unFLNGyzYBzLqs8cVdFq6O-cxuD7vxOvSAaL_7vIzZj4Mom5uob7tFIrcpQBAnRG-hNuThb771wQOjmvp-)
+
+
+
+
+
+***Pay attention to the part that says* “git checkout hubs-cloud” . *You want to make sure that is the branch you checkout and modify, since it is the one suited to working with your own cloud installation. It will also allow you to run off of the Mozilla dev server with the right commands.*** Some issues you may have with getting the client setup correctly will probably have to do with your Node.js setup.  I suggest you use Node version manager (NVM) to create a clean Node.js installation in order to avoid dependency issues with the client installation.  If you have never developed with Node.js on your machine you may not have any issues.  If you’ve done previous node projects, there is a good chance you’ll have some globally installed old versions of NPM packages that will cause issues with trying to get the Hubs client installed and running.  NVM will solve these problems by creating a clean install of Node to work with the Hubs client.  Here is a nice tutorial on [installing node.js locally with NVM](https://heynode.com/tutorial/install-nodejs-locally-nvm).
+
+Once you have Hubs forked and Node.js and NPM installed you can run the client install in a system console to install all of the Hubs dependencies.  The instructions for this can be found here [run-your-custom-client](https://hubs.mozilla.com/docs/hubs-cloud-custom-clients.html#run-your-custom-client).  Pay close attention to the directions.  You will want to run **npm ci** instead of **npm install** in order to make sure the dependencies installed are from the **package-lock.json**.  Then assuming you have your own Mozilla Hubs account or an admin account on your own Hubs cloud installation you can run **npm login** and get credentials installed to start running the client locally. 
+
+|                                    |                                    |                                                       |
+| :--------------------------------- | :--------------------------------: | ----------------------------------------------------: |
+| [Introduction.md](Introduction.md) | [Index](Customizing hubs Title.md) | [Some things to Consider](Some things to Consider.md) |

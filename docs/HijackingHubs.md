@@ -66,7 +66,7 @@ You can add a bunch of custom component links and network schemas into **hub.js*
 > - Modifying hubs with new code can be done through a simple config file on our top level sever
 
 The code to pull this off consists of a the following modification to the hub.js file
- 
+
 
 ```javascript
 	const loadEnvironmentAndConnect = () => {
@@ -197,4 +197,4 @@ You can do a lot of other neat things with this top level server if you want to.
 
 |                                                              |                                                              |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Hubs Load Sequence](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Hubs Load Sequence.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Customizing hubs Title.md) | [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Creating Hubs Components.md) |
+| [Hubs Load Sequence](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HubsLoadSequence.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) | [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CreatingHubsComponents.md) |

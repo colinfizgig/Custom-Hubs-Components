@@ -20,4 +20,4 @@ The advantages of hosting and storing your custom code this way are too numerous
 
 |                                                              |                                                              |
 | :----------------------------------------------------------- | -----------------------------------------------------------: |
-| [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Cannibalizing Components from Hubs.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Customizing hubs Title.md) |
+| [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CannibalizingComponents.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) |

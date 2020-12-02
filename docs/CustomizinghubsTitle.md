@@ -1,8 +1,3 @@
-# Custom-Hubs-Components
-This is a repository for custom Mozilla Hubs components.  These components are designed to be injected into the Mozilla Hubs client without modifying the client code too much.  The one mod needed to inject these components resides in the Hub.html file
-
-The Index below is documentation on the process of creating a custom client and injecting these components into the client using a top-level-server running on Node.js as a middle man.
-
 # Customizing Mozilla Hubs
 
 #### *Here Be Dragons!*
@@ -22,3 +17,6 @@ The Index below is documentation on the process of creating a custom client and 
 7. [Hubs Networked Components](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HubsNetworkedComponents.md) 
 8. [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CannibalizingComponents.md) 
 9. [Adding New Scripts to a Custom Client](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/AddingScriptstoCustomClient.md) 
+
+
+

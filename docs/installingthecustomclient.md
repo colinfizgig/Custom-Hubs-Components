@@ -18,4 +18,4 @@ Once you have Hubs forked and Node.js and NPM installed you can run the client i
 
 |                                                              |                                                              |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Introduction.md](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Introduction.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Customizing hubs Title.md) | [Some things to Consider](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/Some things to Consider.md) |
+| [Introduction.md](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/Introduction.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) | [Some things to Consider](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/SomethingstoConsider.md) |

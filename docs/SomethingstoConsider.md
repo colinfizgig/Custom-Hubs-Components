@@ -14,7 +14,7 @@ This will allow you to play around with modifying the hub’s source and injecti
 
 ![img](https://lh5.googleusercontent.com/i_H92JgV_1khZyP8lZe-s2ramTYhUFAE8Orj8ZlJQ1YLQCFtTpwzCG3lMZniOMyuuBEyID4bnurFU7xqgXBc7csCTQyVVDoe_2YF1l5HWSk616aEuIyqmcNqzfDOHvhfkjCyB2A4)
 
-|                                                              |                                                              |                                                              |
-| :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Installing a Custom Client for Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/installingthecustomclient.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Hubs Load Sequence](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HubsLoadSequence.md) |
+|                                                              |                                  |                                           |
+| :----------------------------------------------------------- | :------------------------------: | ----------------------------------------: |
+| [Installing a Custom Client for Hubs](installingthecustomclient.md) | [Index](CustomizinghubsTitle.md) | [Hubs Load Sequence](HubsLoadSequence.md) |
 

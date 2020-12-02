@@ -18,7 +18,7 @@ The approach we are going to take in customizing Hubs is to ‘modify’ or ‘t
 
 The Orange Hubs client part with the hub.html and hub.js are the only files we will actually modify in the Hubs stack.  Actually, we really only put a small script into the hub.js file which will then modify the hub.html once it knows which scripts to inject.  The green ‘top level node server’ is a simple express server with one route which receives a query parameter for a ‘hub_id’ and replies with a string of URLs for A-frame components and Networked A-frame templates which can be stored on a CDN or in this case Github using the GHpages feature to serve as a CDN.  That’s it.  The code to do all of this is tricky, since you need to know where to ‘put’ things and how to determine when it’s Ok to put them there.  First I’ll share information on how to get the Mozilla Hubs custom client up and running and then I’ll go through the ‘load sequence’ Hubs uses to get everything synced up across the server.
 
-|                                                              |                                                              |
-| :----------------------------------------------------------- | -----------------------------------------------------------: |
-| [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Installing a Custom Client for Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/installingthecustomclient.md) |
+|                                  |                                                              |
+| :------------------------------- | -----------------------------------------------------------: |
+| [Index](CustomizinghubsTitle.md) | [Installing a Custom Client for Hubs](installingthecustomclient.md) |
 

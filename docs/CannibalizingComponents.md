@@ -395,6 +395,6 @@ function mod_addSlides(){
 }
 ```
 
-|                                                              |                                                              |                                                              |
-| :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Hubs Networked Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HubsNetworkedComponents.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Adding New Scripts to a Custom Client](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/AddingScriptstoCustomClient.md) |
+|                                                         |                                  |                                                              |
+| :------------------------------------------------------ | :------------------------------: | -----------------------------------------------------------: |
+| [Hubs Networked Components](HubsNetworkedComponents.md) | [Index](CustomizinghubsTitle.md) | [Adding New Scripts to a Custom Client](AddingScriptstoCustomClient.md) |

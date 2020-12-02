@@ -195,6 +195,6 @@ To test your client locally run the top level server from a system console by sh
 
 You can do a lot of other neat things with this top level server if you want to.  It could serve live streams of data from sensors or packages of data for specific types of 3d effects or 3d buffer objects.  Anything that can be passed into Three.js can be served to hubs from this top level server.  You have to create some code to handle these data streams.  Now that you have a custom client for getting data or code injected into hubs you can play around with making custom components to handle the new inputs.
 
-|                                                              |                                                              |                                                              |
-| :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Hubs Load Sequence](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HubsLoadSequence.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CreatingHubsComponents.md) |
+|                                           |                                  |                                                       |
+| :---------------------------------------- | :------------------------------: | ----------------------------------------------------: |
+| [Hubs Load Sequence](HubsLoadSequence.md) | [Index](CustomizinghubsTitle.md) | [Creating Hubs Components](CreatingHubsComponents.md) |

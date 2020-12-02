@@ -39,7 +39,7 @@
 				this.networkedEl.addEventListener("pinned", this.update);
 				this.networkedEl.addEventListener("unpinned", this.update);
 				window.APP.hubChannel.addEventListener("permissions_updated", this.update);
-				this.data.index = this.networkedEl.getAttribute("slidecounter").index;
+				this.data.index = this.networkedEl.getAttribute("slide-element").index;
 			  })
 			  .catch(() => {}); //ignore exception, entity might not be networked
 			
@@ -67,14 +67,14 @@
 		  onNext() {
 			if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)) return;
 			const newIndex = Math.min(this.data.index + 1, this.data.maxIndex);
-			this.el.setAttribute("slidecounter", "index", newIndex);
+			this.el.setAttribute("slide-element", "index", newIndex);
 			this.el.setAttribute("slidemenu-pager", "index", newIndex);
 		  },
 
 		  onPrev() {
 			if (this.networkedEl && !NAF.utils.isMine(this.networkedEl) && !NAF.utils.takeOwnership(this.networkedEl)) return;
 			const newIndex = Math.max(this.data.index - 1, 0);
-			this.el.setAttribute("slidecounter", "index", newIndex);
+			this.el.setAttribute("slide-element", "index", newIndex);
 			this.el.setAttribute("slidemenu-pager", "index", newIndex);
 		  },
 
@@ -109,7 +109,7 @@
 		assets.appendChild(pageHoverTemplate);
 		
 
-		AFRAME.registerComponent("slidecounter", {
+		AFRAME.registerComponent("slide-element", {
 		schema: {
 			index: { default: 0 },
 			slideScale: {default: 5}
@@ -138,7 +138,7 @@
 					this.networkedEl.addEventListener("unpinned", this.update);
 					window.APP.hubChannel.addEventListener("permissions_updated", this.update);
 					this.networkedEl.object3D.scale.setScalar(this.data.slideScale);
-					this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+					this.currentSlide = this.networkedEl.getAttribute("slide-element").index;
 					this.setupSlides();
 				})
 				.catch(() => {}); //ignore exception, entity might not be networked
@@ -152,7 +152,7 @@
 
 				if (this.networkedEl && NAF.utils.isMine(this.networkedEl)) {
 					if (oldData && typeof oldData.index === "number" && oldData.index !== this.data.index) {
-						this.networkedEl.setAttribute("slidecounter", {index: this.currentSlide});
+						this.networkedEl.setAttribute("slide-element", {index: this.currentSlide});
 					}
 				}
 			},
@@ -167,7 +167,7 @@
 			},
 
 			setupSlides(){
-				this.currentSlide = this.networkedEl.getAttribute("slidecounter").index;
+				this.currentSlide = this.networkedEl.getAttribute("slide-element").index;
 				this.el.setAttribute("media-loader", {src: this.content[this.currentSlide], fitToBox: true, resolve: false})
 			}
 		});
@@ -179,7 +179,7 @@ inject_slideshow_Media();
 // we add the prefix mod_ to this function to allow it to be targeted by the chat interface
 function mod_addSlides(){
 	//only perform this once if the slideshow does not exist already.
-	if(document.querySelector("a-entity[slidecounter]") == null){
+	if(document.querySelector("a-entity[slide-element]") == null){
 		var el = document.createElement("a-entity")
 		el.setAttribute("id", "slideshow")
 		el.setAttribute("networked", { template: "#slideshow-media" } )

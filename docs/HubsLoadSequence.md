@@ -73,4 +73,4 @@ If you wanted to hard code changes into the custom client you would need to add 
 
 |                                                              |                                                              |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Some things to Consider](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/SomethingstoConsider.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) | [Hijacking Hubs.js](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HijackingHubs.md) |
+| [Some things to Consider](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/SomethingstoConsider.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Hijacking Hubs.js](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HijackingHubs.md) |

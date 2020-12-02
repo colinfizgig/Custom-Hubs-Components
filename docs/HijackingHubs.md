@@ -197,4 +197,4 @@ You can do a lot of other neat things with this top level server if you want to.
 
 |                                                              |                                                              |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Hubs Load Sequence](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HubsLoadSequence.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) | [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CreatingHubsComponents.md) |
+| [Hubs Load Sequence](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HubsLoadSequence.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CreatingHubsComponents.md) |

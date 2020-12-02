@@ -20,5 +20,5 @@ The Orange Hubs client part with the hub.html and hub.js are the only files we w
 
 |                                                              |                                                              |
 | :----------------------------------------------------------- | -----------------------------------------------------------: |
-| [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) | [Installing a Custom Client for Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/installingthecustomclient.md) |
+| [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Installing a Custom Client for Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/installingthecustomclient.md) |
 

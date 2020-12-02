@@ -89,5 +89,5 @@ All this function does is get the current index number and set the media-loader 
 
 |                                                              |                                                              |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CreatingHubsComponents.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) | [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CannibalizingComponents.md) |
+| [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CreatingHubsComponents.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CannibalizingComponents.md) |
 

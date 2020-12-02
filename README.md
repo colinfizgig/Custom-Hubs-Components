@@ -13,12 +13,12 @@ The Index below is documentation on the process of creating a custom client and 
 
 ## Index
 
-1. [Introduction](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/Introduction.md) 
-2. [Installing the custom client for Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/installingthecustomclient.md) 
-3. [Some things to Consider](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/SomethingstoConsider.md) 
-4. [Hubs Load Sequence.md](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HubsLoadSequence.md) 
-5. [Hijacking Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HijackingHubs.md) 
-6. [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CreatingHubsComponents.md) 
-7. [Hubs Networked Components](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HubsNetworkedComponents.md) 
-8. [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CannibalizingComponents.md) 
-9. [Adding New Scripts to a Custom Client](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/AddingScriptstoCustomClient.md) 
+1. [Introduction](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/Introduction.md) 
+2. [Installing the custom client for Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/installingthecustomclient.md) 
+3. [Some things to Consider](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/SomethingstoConsider.md) 
+4. [Hubs Load Sequence.md](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HubsLoadSequence.md) 
+5. [Hijacking Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HijackingHubs.md) 
+6. [Creating Hubs Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CreatingHubsComponents.md) 
+7. [Hubs Networked Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HubsNetworkedComponents.md) 
+8. [Cannibalizing Components from Hubs](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CannibalizingComponents.md) 
+9. [Adding New Scripts to a Custom Client](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/AddingScriptstoCustomClient.md) 

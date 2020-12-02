@@ -44,4 +44,4 @@ This gets a-frame rendering synced up between clients , but what about component
 
 |                                                              |                                                              |                                                              |
 | :----------------------------------------------------------- | :----------------------------------------------------------: | -----------------------------------------------------------: |
-| [Hijacking Hubs.js](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HijackingHubs.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/CustomizinghubsTitle.md) | [Hubs Networked Components](https://github.com/colinfizgig/Custom-Hubs-Components/docs/blob/ghpages/HubsNetworkedComponents.md) |
+| [Hijacking Hubs.js](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HijackingHubs.md) | [Index](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/CustomizinghubsTitle.md) | [Hubs Networked Components](https://github.com/colinfizgig/Custom-Hubs-Components/blob/ghpages/docs/HubsNetworkedComponents.md) |

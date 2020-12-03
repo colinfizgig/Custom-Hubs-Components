@@ -11,7 +11,7 @@ AFRAME.registerComponent('camera-cube-env', {
 		matoverride: {type:'boolean', default: false},
 		metalness: { type:'float', default: 1.0},
 		roughness: { type:'float', default: 0.0},
-	    repeat: { type:'boolean', default: false}
+	    repeat: { type:'boolean', default: true}
 	  },
 
 	  /**

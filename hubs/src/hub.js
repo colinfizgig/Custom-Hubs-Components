@@ -661,8 +661,8 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
         });
 		
 		// >>>>> Once the loadEnvironmentAndConnect() function runs we can inject the custom client stuff
-		finishInjection(); // script injection function added below
-
+		// script injection function added below
+		injectScripts();
     }
 
 	window.APP.hub = hub;
@@ -685,56 +685,26 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
 	////////////////////////////////////////////////////////////////////////////////////////
 	// script injection function which was called above
 	////////////////////////////////////////////////////////////////////////////////////////
-	function finishInjection(){
-
-		console.log("checking access");
-		console.log(hub.hub_id);
-
-		//local host check to our Node server.  Should be to node server at some point.
-		//https://localhost:8080/hub.html?hub_id=2MCVA2f is a hub that contains a good scene
-		//for testing purposes.
+	function injectScripts(){
+		//get the current hub_id
 		const myHub = hub.hub_id;
-
+		//construct a url with a query param of the current hub_id
 		const url = "http://localhost:3000/injectScripts?hubid="+ myHub;
-			
-		function makeRequest (method, url) {
-				
-			return new Promise(function (resolve, reject) {
-				var xhr = new XMLHttpRequest();
-				xhr.open(method, url);
-				xhr.onload = function () {
-					if (this.status >= 200 && this.status < 300) {
-						resolve(xhr.response);
-					} else {
-						reject({
-							status: this.status,
-							statusText: xhr.statusText
-						});
-					}
-				};
-				xhr.onerror = function () {
-					reject({
-						status: this.status,
-						statusText: xhr.statusText
-					});
-				};
-				xhr.send();
-			});
-		}
-
-		makeRequest('GET', url)
-		.then(function (datums) {
-			console.log("got server hub response");
-			console.log(datums);
-						
-			var myUrls = datums.split(",");
+		
+		//fetch the url with a get method and create scripts with the response if we get any
+		fetch(url, {
+		  method: 'get'
+		})
+		.then(function(body){
+		  return body.text();
+		}).then(function(data) {
+			var myUrls = data.split(",");
 			var myBody = document.querySelector("body");
 			for(var items of myUrls) {
 				if(items == "noUrls"){
 					break;
 				}
-				console.log("iterating");
-				//inject some scripts based on the returned urls (we may need to split a list or something.
+				//inject some scripts based on the returned array of urls
 				var newScript = document.createElement("script");
 				newScript.type = 'text/javascript';
 
@@ -744,13 +714,8 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
 
 				myBody.appendChild(newScript);
 			}
-			resolve();
-		})
-		.catch(function (err) {
-			console.error('Augh, there was an error!', err.statusText);
-		});	
+		});
 	}
-	
 	///////////////////////////////////////////////////////////////////////////////////////	
 	// 	finish injected scripts stuff
 	///////////////////////////////////////////////////////////////////////////////////////

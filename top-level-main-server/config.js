@@ -1,6 +1,7 @@
 // create a config object for reading in hubs configured for injecting scripts
 // regular slides images
-// https://localhost:8080/hub.html?hub_id=2MCVA2f  
+// https://localhost:8080/hub.html?hub_id=2MCVA2f 
+// https://hubs.aelatgt.net/2MCVA2f/cultured-lustrous-roundtable 
 // google slides
 // https://localhost:8080/hub.html?hub_id=8T88rLN
 

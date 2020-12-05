@@ -6,10 +6,12 @@ const fetch = require('node-fetch');
 //load the config files which contains our hub_ids and their urls
 //const config = require('./config');
 const configUrl = 'https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js';
+var config1;
 const config = fetch('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js')
     .then(res => res.json())
     .then(json => {
-		console.log(json);
+		config1 = json;
+		console.log(config1);
 		return json;
 	});
 //const config = require('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js');

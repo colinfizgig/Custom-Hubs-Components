@@ -1,4 +1,4 @@
-'{
+{
 	"hubsarray": [
 		{
 			"hub_id": "2MCVA2f", 
@@ -25,4 +25,4 @@
 			"urls":"https://colinfizgig.github.io/Custom-Hubs-Components/components/camera-cube-env.js,https://colinfizgig.github.io/aframe_Components/asteroids/js/agame.js,https://colinfizgig.github.io/aframe_Components/asteroids/js/AGameKeymapping.js,https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/aframe-extras.min.js,https://colinfizgig.github.io/aframe_Components/components/aframe-thumb-controls-component.min.js"
 		}
 	]
-}'
+}

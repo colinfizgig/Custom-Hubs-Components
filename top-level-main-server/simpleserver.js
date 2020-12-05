@@ -2,9 +2,13 @@ const http = require("http");
 const https = require("https");
 const express = require("express");
 const cors = require('cors');
+const fetch = require('node-fetch');
 //load the config files which contains our hub_ids and their urls
 //const config = require('./config');
-import {config} from"http://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.mjs";
+const configUrl = 'https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js';
+fetch('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js')
+    .then(res => res.json())
+    .then(json => console.log(json));
 //const config = require('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js');
 
 const app = express();

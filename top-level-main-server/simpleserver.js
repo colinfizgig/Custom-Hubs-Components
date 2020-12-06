@@ -10,10 +10,13 @@ const configUrl = 'https://colinfizgig.github.io/Custom-Hubs-Components/top-leve
 const config = fetch('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js')
     .then(res => res.text())
     .then(json => {
-		const myVar = json.toString();
-		const myJson = JSON.parse(myVar);
-		console.log(myJson);
-		return json;
+		var jsonify = (JSON.parse(json));
+		return jsonify;
+	})
+	.then(myjson => {
+		var myElement = myjson(hubsarray);
+		console.log(myElement);
+		return myjson;
 	});
 //const config = require('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js');
 

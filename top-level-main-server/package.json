@@ -4,12 +4,10 @@
   "description": "top level node server",
   "main": "index.js",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "http": "0.0.0",
     "https": "^1.0.0",
-    "node-fetch": "^2.6.1",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {

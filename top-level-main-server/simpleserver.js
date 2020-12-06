@@ -3,25 +3,22 @@ const https = require("https");
 const express = require("express");
 const cors = require('cors');
 const fetch = require('node-fetch');
-//load the config files which contains our hub_ids and their urls
-//const config = require('./config');
-const configUrl = 'https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js';
 
-const config = fetch('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js')
-    .then(res => res.text())
-    .then(json => {
-		var jsonify = (JSON.parse(json));
-		return jsonify;
-	})
-	.then(myjson => {
-		var myElement = myjson(hubsarray);
-		console.log(myElement);
-		return myjson;
-	});
-//const config = require('https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.js');
+//load the config files which contains our hub_ids and their urls
+const configUrl = 'https://colinfizgig.github.io/Custom-Hubs-Components/top-level-main-server/config.json';
+
+let settings = { method: "Get" };
+let config = {};
+const configPromise = fetch(configUrl, settings)
+    .then(res => res.json())
+    .then((json) => {
+		config = json;
+		return(json);
+    });
 
 const app = express();
 app.use(cors());
+
 app.get(
 	"/injectScripts",
 	async (req, res) => {

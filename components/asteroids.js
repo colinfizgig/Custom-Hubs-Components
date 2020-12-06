@@ -9,12 +9,20 @@ function inject_arcade_asteroids() {
 	
 	var cabinetAsset = document.createElement("a-asset-item");
 	cabinetAsset.id = "cabinet";
-	cabinetAsset.src = cabinetUrl;
+	
+	var srcAt = document.createAttribute('src');
+	srcAt.value = cabinetUrl;
+	cabinetAsset.setAttributeNode(srcAt);
+
 	myAssets.appendChild(cabinetAsset);
 	
 	var screenAsset = document.createElement("a-asset-item");
 	screenAsset.id = "screen";
-	screenAsset.src = screenUrl;
+	
+	srcAt = document.createAttribute('src');
+	srcAt.value = screenUrl;
+	screenAsset.setAttributeNode(srcAt);
+
 	myAssets.appendChild(screenAsset);
 	
 	var gameSrcUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/js/agame.js";
@@ -27,7 +35,7 @@ function inject_arcade_asteroids() {
 	
 	var newScript = document.createElement("script");
 	newScript.type = 'text/javascript';
-	var srcAt = document.createAttribute('src');
+	srcAt = document.createAttribute('src');
 	srcAt.value = gameSrcUrl;
 	newScript.setAttributeNode(srcAt);
 	myBody.appendChild(newScript);

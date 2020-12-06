@@ -51,21 +51,50 @@ function inject_GameElements(){
 	myAsteroidsCabinet.position = "-3.09 0 -3";
 	
 	var cabModel = document.createElement("a-entity");
-	cabModel.gltf-model = "#cabinet";
-	cabModel.camera-cube-env = "resolution:256; interval: 1000";
-	cabModel.shadow = "";
-	cabModel.position = "0 0 0";
-	cabModel.scale = "1 1 1";
+	var newAtt = document.createAttribute('gltf-model');
+	newAtt.value = "#cabinet";
+	cabModel.setAttributeNode(newAtt);
+	
+	newAtt = document.createAttribute('camera-cube-env');
+	newAtt.value = "resolution:256; interval: 1000";
+	cabModel.setAttributeNode(newAtt);
+
+	newAtt = document.createAttribute('shadow');
+	newAtt.value = "";
+	cabModel.setAttributeNode(newAtt);
+
+	newAtt = document.createAttribute('position');
+	newAtt.value = "0 0 0";
+	cabModel.setAttributeNode(newAtt);
+	
+	newAtt = document.createAttribute('scale');
+	newAtt.value = "1 1 1";
+	cabModel.setAttributeNode(newAtt);
 	
 	myAsteroidsCabinet.appendChild(cabModel);
 	
 	var scrnModel = document.createElement("a-entity");
 	scrnModel.id = "gamescreen";
-	scrnModel.obj-model = "obj:#screen";
-	scrnModel.position = "0 0 0";
-	scrnModel.scale = "0.01 0.01 0.01"
-	scrnModel.material = "src:#asteroids; shader:flat";
-	scrnModel.canvas-updater = "";
+	
+	newAtt = document.createAttribute('obj-model');
+	newAtt.value = "obj:#screen";
+	scrnModel.setAttributeNode(newAtt);
+	
+	newAtt = document.createAttribute('position');
+	newAtt.value = "0 0 0";
+	scrnModel.setAttributeNode(newAtt);
+	
+	newAtt = document.createAttribute('scale');
+	newAtt.value = "0.01 0.01 0.01";
+	scrnModel.setAttributeNode(newAtt);
+	
+	newAtt = document.createAttribute('material');
+	newAtt.value = "src:#asteroids; shader: flat";
+	scrnModel.setAttributeNode(newAtt);
+	
+	newAtt = document.createAttribute('canvas-updater');
+	newAtt.value = "";
+	scrnModel.setAttributeNode(newAtt);
 	
 	myAsteroidsCabinet.appendChild(scrnModel);
 	

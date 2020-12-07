@@ -69,7 +69,7 @@ function inject_arcade_asteroids() {
 	cabModel.setAttributeNode(newAtt);
 
 	newAtt = document.createAttribute('position');
-	newAtt.value = "0 -1 0";
+	newAtt.value = "0 -3 0";
 	cabModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('scale');
@@ -91,7 +91,7 @@ function inject_arcade_asteroids() {
 	scrnModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('scale');
-	newAtt.value = "1 1 1";
+	newAtt.value = ".75 .75 .75";
 	scrnModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('material');

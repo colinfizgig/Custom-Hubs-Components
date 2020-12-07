@@ -25,8 +25,6 @@ function inject_arcade_asteroids() {
 	srcAt.value = gameKeyMapUrl;
 	newScript.setAttributeNode(srcAt);
 	myBody.appendChild(newScript);
-	
-	mod_createGame();
 
 	var cabinetUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/CabinetMerged.glb";
 	//var screenUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/Screen1.obj";
@@ -120,6 +118,8 @@ function inject_arcade_asteroids() {
 inject_arcade_asteroids();
 
 function inject_GameElements(){
+	mod_createGame();
+	
 	var el = document.createElement("a-entity")
 	el.setAttribute("id", "game")
 	el.setAttribute("networked", { template: "#asteroids-game" } )

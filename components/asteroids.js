@@ -26,7 +26,7 @@ function inject_arcade_asteroids() {
 	newScript.setAttributeNode(srcAt);
 	myBody.appendChild(newScript);
 
-	var cabinetUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/CabinetMerged.glb";
+	var cabinetUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/AsteroidsCabinetMerged.glb";
 	//var screenUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/Screen1.obj";
 	
 	var myText = document.createElement("input");
@@ -37,6 +37,7 @@ function inject_arcade_asteroids() {
 	// preload the cabinet asset in assets
 	var cabinetAsset = document.createElement("a-asset-item");
 	cabinetAsset.id = "cabinet";
+	cabinetAsset.response-type = "arraybuffer";
 	
 	var srcAt = document.createAttribute('src');
 	srcAt.value = cabinetUrl;

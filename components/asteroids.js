@@ -103,15 +103,60 @@ function inject_arcade_asteroids() {
 	
 	myAsteroidsCabinet.appendChild(scrnModel);
 	
-	myTemplate.appendChild(myAsteroidsCabinet);
+	myTemplate.content.appendChild(myAsteroidsCabinet);
+	myAssets.appendChild(myTemplate);
 	
-	//var screenAsset = document.createElement("a-asset-item");
-	//screenAsset.id = "screen";
 	
-	//srcAt = document.createAttribute('src');
-	//srcAt.value = screenUrl;
-	//screenAsset.setAttributeNode(srcAt);
-	//myAssets.appendChild(screenAsset);
+	
+	//	This sets up an update function for how often each networked entity needs to update
+	// position, rotation, or scale based on each transforms setting in the NAF schema.
+	// I'm not sure why it's not a utility function in NAF?
+	const vectorRequiresUpdate = epsilon => {
+		return () => {
+			let prev = null;
+
+			return curr => {
+				if (prev === null) {
+					prev = new THREE.Vector3(curr.x, curr.y, curr.z);
+					return true;
+				} else if (!NAF.utils.almostEqualVec3(prev, curr, epsilon)) {
+					prev.copy(curr);
+					return true;
+				}
+
+			return false;
+			};
+		};
+	};
+						
+						
+	// Add the new schema to NAF. and declare the networked components and their update 
+	// sensitivity using the function above if they modify the transforms.
+	NAF.schemas.add({
+		// template to add (created above)
+		template: "#asteroids-game",
+
+		components: [
+			{
+				component: "position",
+				requiresNetworkUpdate: vectorRequiresUpdate(0.001)
+			},
+			{
+				component: "rotation",
+				requiresNetworkUpdate: vectorRequiresUpdate(0.5)
+			},
+			{
+				component: "scale",
+				requiresNetworkUpdate: vectorRequiresUpdate(0.001)
+			},
+			// TODO: Optimize checking mediaOptions with requiresNetworkUpdate.
+			"media-loader",
+			"pinnable"
+		],
+		nonAuthorizedComponents: [
+			
+		]
+	});
 
 }
 

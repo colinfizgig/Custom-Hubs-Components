@@ -53,7 +53,7 @@ function inject_arcade_asteroids() {
 	// parent entity so screen goes with cabinet
 	var myAsteroidsCabinet = document.createElement("a-entity");
 	myAsteroidsCabinet.id = "AsteroidsCabinet";
-	myAsteroidsCabinet.position = "0 0 -1";
+	myAsteroidsCabinet.position = "0 0 0";
 	
 	var cabModel = document.createElement("a-entity");
 	var newAtt = document.createAttribute('gltf-model');
@@ -69,7 +69,7 @@ function inject_arcade_asteroids() {
 	cabModel.setAttributeNode(newAtt);
 
 	newAtt = document.createAttribute('position');
-	newAtt.value = "0 0 0";
+	newAtt.value = "0 1 0";
 	cabModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('scale');

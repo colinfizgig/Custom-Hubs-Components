@@ -1,5 +1,8 @@
 
 function inject_arcade_asteroids() {
+		
+	var myBody = document.querySelector("body");
+	var myAssets = document.querySelector("a-assets");
 	
 	var gameSrcUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/agame.js";
 	var gameKeyMapUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/AGameKeymapping.js";
@@ -27,9 +30,6 @@ function inject_arcade_asteroids() {
 
 	var cabinetUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/CabinetMerged.glb";
 	//var screenUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/Screen1.obj";
-	
-	var myBody = document.querySelector("body");
-	var myAssets = document.querySelector("a-assets");
 	
 	var myText = document.createElement("input");
 	myText.type = "text";

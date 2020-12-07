@@ -1,8 +1,30 @@
 
 function inject_arcade_asteroids() {
 	
-	mod_createGame();
+	var gameSrcUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/agame.js";
+	var gameKeyMapUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/AGameKeymapping.js";
 	
+	var newLink = document.createElement("link");
+	newLink.rel = "stylesheet";
+	newLink.href = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/style.css";
+	document.querySelector("head").appendChild(newLink);
+	
+	var newScript = document.createElement("script");
+	newScript.type = 'text/javascript';
+	srcAt = document.createAttribute('src');
+	srcAt.value = gameSrcUrl;
+	newScript.setAttributeNode(srcAt);
+	myBody.appendChild(newScript);
+	
+	newScript = document.createElement("script");
+	newScript.type = 'text/javascript';
+	srcAt = document.createAttribute('src');
+	srcAt.value = gameKeyMapUrl;
+	newScript.setAttributeNode(srcAt);
+	myBody.appendChild(newScript);
+	
+	mod_createGame();
+
 	var cabinetUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/CabinetMerged.glb";
 	//var screenUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/Asteroids/Screen1.obj";
 	
@@ -93,29 +115,6 @@ function inject_arcade_asteroids() {
 	//screenAsset.setAttributeNode(srcAt);
 	//myAssets.appendChild(screenAsset);
 
-
-	var gameSrcUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/agame.js";
-	var gameKeyMapUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/AGameKeymapping.js";
-	
-	var newLink = document.createElement("link");
-	newLink.rel = "stylesheet";
-	newLink.href = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/style.css";
-	document.querySelector("head").appendChild(newLink);
-	
-	var newScript = document.createElement("script");
-	newScript.type = 'text/javascript';
-	srcAt = document.createAttribute('src');
-	srcAt.value = gameSrcUrl;
-	newScript.setAttributeNode(srcAt);
-	myBody.appendChild(newScript);
-	
-	newScript = document.createElement("script");
-	newScript.type = 'text/javascript';
-	srcAt = document.createAttribute('src');
-	srcAt.value = gameKeyMapUrl;
-	newScript.setAttributeNode(srcAt);
-	myBody.appendChild(newScript);
-	
 }
 
 inject_arcade_asteroids();

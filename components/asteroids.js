@@ -37,7 +37,7 @@ function inject_arcade_asteroids() {
 	// preload the cabinet asset in assets
 	var cabinetAsset = document.createElement("a-asset-item");
 	cabinetAsset.id = "cabinet";
-	cabinetAsset.response-type = "arraybuffer";
+	//cabinetAsset.response-type = "arraybuffer";
 	
 	var srcAt = document.createAttribute('src');
 	srcAt.value = cabinetUrl;

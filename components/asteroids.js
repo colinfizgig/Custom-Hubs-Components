@@ -69,7 +69,7 @@ function inject_arcade_asteroids() {
 	cabModel.setAttributeNode(newAtt);
 
 	newAtt = document.createAttribute('position');
-	newAtt.value = "0 1 0";
+	newAtt.value = "0 -1 0";
 	cabModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('scale');

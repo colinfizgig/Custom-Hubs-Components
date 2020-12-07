@@ -7,6 +7,11 @@ function inject_arcade_asteroids() {
 	var myBody = document.querySelector("body");
 	var myAssets = document.querySelector("a-assets");
 	
+	var myText = document.createElement("input");
+	myText.type = "text";
+	myText.id = "namefield";
+	document.body.insertBefore(myText, document.body.firstChild);
+	
 	var cabinetAsset = document.createElement("a-asset-item");
 	cabinetAsset.id = "cabinet";
 	
@@ -25,12 +30,12 @@ function inject_arcade_asteroids() {
 
 	myAssets.appendChild(screenAsset);
 	
-	var gameSrcUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/js/agame.js";
-	var gameKeyMapUrl = "https://colinfizgig.github.io/aframe_Components/asteroids/js/AGameKeymapping.js";
+	var gameSrcUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/agame.js";
+	var gameKeyMapUrl = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/AGameKeymapping.js";
 	
 	var newLink = document.createElement("link");
 	newLink.rel = "stylesheet";
-	newLink.href = "https://colinfizgig.github.io/aframe_Components/asteroids/css/style.css";
+	newLink.href = "https://colinfizgig.github.io/Custom-Hubs-Components/components/asteroids/style.css";
 	document.querySelector("head").appendChild(newLink);
 	
 	var newScript = document.createElement("script");

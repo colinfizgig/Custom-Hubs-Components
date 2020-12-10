@@ -61,7 +61,7 @@ function inject_arcade_asteroids() {
 	cabModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('camera-cube-env');
-	newAtt.value = "resolution:256; interval: 1000; distance: 1000; matoverride: true; metalness: 1.0; roughness: 1.0; repeat: false";
+	newAtt.value = "resolution:256; interval: 1000; distance: 1000; matoverride: true; metalness: 0.0; roughness: 0.0; repeat: false";
 	cabModel.setAttributeNode(newAtt);
 
 	newAtt = document.createAttribute('shadow');

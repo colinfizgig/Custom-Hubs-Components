@@ -61,7 +61,7 @@ function inject_arcade_asteroids() {
 	cabModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('camera-cube-env');
-	newAtt.value = "resolution:256; interval: 1000";
+	newAtt.value = "resolution:256; interval: 1000; distance: 1000; matoverride: true; metalness: 1.0; roughness: 1.0; repeat: false";
 	cabModel.setAttributeNode(newAtt);
 
 	newAtt = document.createAttribute('shadow');
@@ -69,7 +69,7 @@ function inject_arcade_asteroids() {
 	cabModel.setAttributeNode(newAtt);
 
 	newAtt = document.createAttribute('position');
-	newAtt.value = "0 -2.2 0";
+	newAtt.value = "0 -2.15 0";
 	cabModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('scale');
@@ -87,7 +87,7 @@ function inject_arcade_asteroids() {
 	scrnModel.setAttributeNode(newAtt);*/
 	
 	newAtt = document.createAttribute('position');
-	newAtt.value = "0 -.5 0";
+	newAtt.value = "0 -.7 0";
 	scrnModel.setAttributeNode(newAtt);
 	
 	newAtt = document.createAttribute('scale');

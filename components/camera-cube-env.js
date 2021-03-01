@@ -11,7 +11,7 @@ AFRAME.registerComponent('camera-cube-env', {
 		matoverride: {type:'boolean', default: false},
 		metalness: { type:'float', default: 1.0},
 		roughness: { type:'float', default: 0.0},
-	    repeat: { type:'boolean', default: true}
+	    repeat: { type:'boolean', default: false}
 	  },
 
 	  /**
@@ -51,6 +51,7 @@ AFRAME.registerComponent('camera-cube-env', {
 
 				if (node.type.indexOf('Mesh') !== -1) {
 					if(this.data.matoverride == true){
+						console.log("override material = true");
 						node.material.metalness = this.data.metalness;
 						node.material.roughness = this.data.roughness;
 					}
